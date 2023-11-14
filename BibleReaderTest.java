@@ -17,6 +17,12 @@ class BibleReaderTest {
                 "In the beginning God created the heaven and the earth.")
                 : "Text doesn't match.";
 
+        assert new Bible().openBookChapter("genesis", 2).equals(
+                "And the earth was without form, and void; and darkness was upon the "+
+                "face of the deep. And the Spirit of God moved upon the face of the "+
+                "waters.")
+                : "Text doesn't match.";
+
         System.out.println("All tests passed.");
     }
 }

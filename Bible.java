@@ -16,12 +16,23 @@ class Bible {
     }
 
     String openBookChapter(String book, int chapter) {
+        long location = 0;
+        if (chapter == 1) location = 0x12839;
+        else if (chapter == 2) location = 0x12876l;
+
         try {
-            mBufferedReader.skip(0x12839);
-            return mBufferedReader.readLine();
+            mBufferedReader.skip(location);
+            mBufferedReader.read(mCharBuffer, 0, 512);
         } catch (IOException e) { System.err.println(e); }
 
-        return "";
+        String string = new String(mCharBuffer);
+        string = string
+                .substring(0, string.indexOf('^'))
+                .replace("\n", "")
+                .replaceAll("   ", " ")
+                .trim()
+                ;
+        return string;
     }
 
     String openBookChapter(String book) { return openBookChapter(book, 1); }
