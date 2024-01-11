@@ -18,7 +18,7 @@ class Bible {
     String openBookChapter(String book, int chapter) {
         long location = 0;
         if (chapter == 1) location = 0x12839;
-        else if (chapter == 2) location = 0x12876l;
+        else if (chapter == 2) location = 0x12876L;
 
         try {
             mBufferedReader.skip(location);
