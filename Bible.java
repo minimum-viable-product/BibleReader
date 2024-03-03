@@ -16,7 +16,7 @@ class Bible {
     }
 
     String openBook(String book, int chapter) {
-        long location = 0;
+        long location = 0L;
         if (chapter == 1) location = 0x12839L;
         else if (chapter == 2) location = 0x12876L;
         else if (chapter == 3) location = 0x12911L;
