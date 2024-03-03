@@ -52,6 +52,15 @@ class Bible {
 
     void
     findBooks() {
-
+        String line;
+        long count = 0;
+        try {
+            while ((line = mBufferedReader.readLine()) != null) {
+                if (line.trim().equals("Chapter 1")) {
+                    ++count;
+                    System.out.println(line + count);
+                }
+            }
+        } catch (IOException e) { System.err.println(e); }
     }
 }
