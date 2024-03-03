@@ -5,8 +5,11 @@ import java.io.IOException;
 
 
 class Bible {
-    char[] mCharBuffer = new char[5504282];
-    BufferedReader mBufferedReader;
+    char[]
+    mCharBuffer = new char[5504282];
+
+    BufferedReader
+    mBufferedReader;
 
     Bible() {
         try {
@@ -15,7 +18,8 @@ class Bible {
         } catch (FileNotFoundException e) { System.err.println(e); }
     }
 
-    String openBook(String book, int chapter) {
+    String
+    openBook(String book, int chapter) {
         long location = 0L;
         if (chapter == 1) location = 0x12839L;
         else if (chapter == 2) location = 0x12876L;
@@ -36,7 +40,18 @@ class Bible {
         return string;
     }
 
-    String openBook(String book) { return openBook(book, 1); }
-    String openBook() { return openBook("genesis", 1); }
+    String
+    openBook(String book) {
+        return openBook(book, 1);
+    }
 
+    String
+    openBook() {
+        return openBook("genesis", 1);
+    }
+
+    void
+    findBooks() {
+
+    }
 }
