@@ -3,32 +3,37 @@ class BibleReaderTest {
         boolean assertsEnabled = false;
         assert assertsEnabled = true;
         if (! assertsEnabled) throw new RuntimeException(
-                "ASSERTIONS MUST BE ENABLED WITH: -ea"
+                "\n\nASSERTIONS MUST BE ENABLED WITH: -ea\n"
         );
     }
 
     public static void main(String[] args) {
         assert new Bible()
-                .openBookChapter("genesis", 1)
+                .openBook("genesis", 1)
                 .equals("In the beginning God created the heaven and the earth.")
-                : "TEXT SHOULD MATCH";
+                : "\n\nTEXT SHOULD MATCH\n";
 
         assert new Bible()
-                .openBookChapter("genesis")
+                .openBook("genesis")
                 .equals("In the beginning God created the heaven and the earth.")
-                : "TEXT SHOULD MATCH";
+                : "\n\nTEXT SHOULD MATCH\n";
 
         assert new Bible()
-                .openBookChapter()
+                .openBook()
                 .equals("In the beginning God created the heaven and the earth.")
-                : "TEXT SHOULD MATCH";
+                : "\n\nTEXT SHOULD MATCH\n";
 
         assert new Bible()
-                .openBookChapter("genesis", 2)
+                .openBook("genesis", 2)
                 .equals("And the earth was without form, and void; and darkness was upon the "+
                         "face of the deep. And the Spirit of God moved upon the face of the "+
                         "waters.")
-                : "TEXT SHOULD MATCH";
+                : "\n\nTEXT SHOULD MATCH\n";
+
+        assert new Bible()
+                .openBook("genesis", 3)
+                .equals("And God said, Let there be light: and there was light.")
+                : "\n\nTEXT SHOULD MATCH\n";
 
 
         System.out.println("All tests passed.");

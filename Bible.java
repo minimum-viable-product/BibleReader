@@ -15,10 +15,11 @@ class Bible {
         } catch (FileNotFoundException e) { System.err.println(e); }
     }
 
-    String openBookChapter(String book, int chapter) {
+    String openBook(String book, int chapter) {
         long location = 0;
-        if (chapter == 1) location = 0x12839;
+        if (chapter == 1) location = 0x12839L;
         else if (chapter == 2) location = 0x12876L;
+        else if (chapter == 3) location = 0x12911L;
 
         try {
             mBufferedReader.skip(location);
@@ -35,7 +36,7 @@ class Bible {
         return string;
     }
 
-    String openBookChapter(String book) { return openBookChapter(book, 1); }
-    String openBookChapter() { return openBookChapter("genesis", 1); }
+    String openBook(String book) { return openBook(book, 1); }
+    String openBook() { return openBook("genesis", 1); }
 
 }
