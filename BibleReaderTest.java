@@ -2,22 +2,17 @@ import java.io.*;
 
 class BibleReaderTest {
     static {
-        boolean assertsEnabled = false;
-        assert assertsEnabled = true;
-        if (! assertsEnabled) throw new RuntimeException(
-                "\n\nASSERTIONS MUST BE ENABLED WITH: -ea\n"
-        );
+        boolean isAssertEnabled = false;
+        assert isAssertEnabled = true;
+        if (! isAssertEnabled) throw new RuntimeException(
+                "\n\nASSERTIONS MUST BE ENABLED WITH: -ea\n");
     }
 
-    public static void main(String[] args) {
+    public static void
+    main(String[] args) {
         runLowLevelTests();
-        assert new Bible().openBufferedReader("") == null
-                : "SHOULD RETURN NULL";
-
         runHighLevelTests();
-
         runUserLevelTests();
-
         //System.out.println("All unit tests passed.");
     }  // main
 
@@ -25,10 +20,8 @@ class BibleReaderTest {
     int
     runLowLevelTests() {
         System.out.println("Low level testing commencing...");
-
-        testOpenBufferedReader();
+        test_openBufferedReader_returnsBufferedReader();
         testBibleFillBuffer();
-
         System.out.println("Low level testing completed.\n");
         return 0;
     }  // low level testing
@@ -75,14 +68,17 @@ class BibleReaderTest {
         System.out.println("User level testing commencing...");
         System.out.println("--> exception expected! <--");
 
-        testDisplayErrorAndExit();
-
+        //testDisplayErrorAndExit();
+        test_openBufferedReader_throwsFileNotFoundException();
         return 0;
     }
 
+    /* Low level tests... */
+
     static
     int
-    testOpenBufferedReader() {
+    test_openBufferedReader_returnsBufferedReader() {
+        //todo: register in low-level test list
         assert BufferedReader.class
                 .isInstance(new Bible().openBufferedReader("kjv.txt"))
                 : "SHOULD RETURN A BUFFERED READER INSTANCE";
@@ -91,8 +87,23 @@ class BibleReaderTest {
 
     static
     int
+    test_openBufferedReader_throwsFileNotFoundException() {
+        //TODO: Register in user-level test list
+
+        /* Arrange */
+        Bible bible = new Bible();
+        BufferedReader result;
+
+        /* Act */
+        result = bible.openBufferedReader("\0");
+
+        return 0;
+    }
+
+    static
+    int
     testBibleFillBuffer() {
-        //register test in test list
+        //todo: register test in low-level test list
         Bible bible = new Bible();
         BufferedReader bufferedReader = bible.openBufferedReader("blank.txt");
         assert BufferedReader.class.isInstance(

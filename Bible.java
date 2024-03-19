@@ -16,6 +16,7 @@ class Bible {
         try {
             bufferedReader = new BufferedReader(new FileReader(filename));
         } catch (FileNotFoundException e) {
+            System.err.println(e);
             bufferedReader = null;  // handle problem here instead of null?
         }
 
