@@ -1,3 +1,5 @@
+import java.io.*;
+
 class BibleReaderTest {
     static {
         boolean assertsEnabled = false;
@@ -8,6 +10,34 @@ class BibleReaderTest {
     }
 
     public static void main(String[] args) {
+        runLowLevelTests();
+        assert new Bible().openBufferedReader("") == null
+                : "SHOULD RETURN NULL";
+
+        runHighLevelTests();
+
+        runUserLevelTests();
+
+        //System.out.println("All unit tests passed.");
+    }  // main
+
+    static
+    int
+    runLowLevelTests() {
+        System.out.println("Low level testing commencing...");
+
+        testOpenBufferedReader();
+        testBibleFillBuffer();
+
+        System.out.println("Low level testing completed.\n");
+        return 0;
+    }  // low level testing
+
+    static
+    int
+    runHighLevelTests() {
+        System.out.println("High level testing commencing...");
+
         assert new Bible()
                 .openBook("genesis", 1)
                 .equals("In the beginning God created the heaven and the earth.")
@@ -35,7 +65,45 @@ class BibleReaderTest {
                 .equals("And God said, Let there be light: and there was light.")
                 : "\n\nTEXT SHOULD MATCH\n";
 
+        System.out.println("High level testing completed.\n");
+        return 0;
+    }  // high level tests
 
-        System.out.println("All tests passed.");
+    static
+    int
+    runUserLevelTests() {
+        System.out.println("User level testing commencing...");
+        System.out.println("--> exception expected! <--");
+
+        testDisplayErrorAndExit();
+
+        return 0;
+    }
+
+    static
+    int
+    testOpenBufferedReader() {
+        assert BufferedReader.class
+                .isInstance(new Bible().openBufferedReader("kjv.txt"))
+                : "SHOULD RETURN A BUFFERED READER INSTANCE";
+        return 0;
+    }
+
+    static
+    int
+    testBibleFillBuffer() {
+        //register test in test list
+        Bible bible = new Bible();
+        BufferedReader bufferedReader = bible.openBufferedReader("blank.txt");
+        assert BufferedReader.class.isInstance(
+                bible.fillBuffer(0L, bufferedReader))
+                : "SHOULD RETURN A BUFFERED READER INSTANCE";
+        return 0;
+    }
+
+    static
+    void
+    testDisplayErrorAndExit() {  // INTERGRATION / USER LEVEL ?!
+        Bible.DisplayErrorAndExit(new Exception());
     }
 }
