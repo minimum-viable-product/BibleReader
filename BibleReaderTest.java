@@ -19,18 +19,17 @@ class BibleReaderTest {
     static
     int
     runLowLevelTests() {
-        System.out.println("Low level testing commencing...");
         test_openBufferedReader_returnsBufferedReader();
+        test_openBufferedReader_returnsReader();
         testBibleFillBuffer();
-        System.out.println("Low level testing completed.\n");
+        //test_Bible_FillBuffer_withNull();
+        System.out.println("Low level testing completed.");
         return 0;
-    }  // low level testing
+    }
 
     static
     int
     runHighLevelTests() {
-        System.out.println("High level testing commencing...");
-
         assert new Bible()
                 .openBook("genesis", 1)
                 .equals("In the beginning God created the heaven and the earth.")
@@ -58,9 +57,9 @@ class BibleReaderTest {
                 .equals("And God said, Let there be light: and there was light.")
                 : "\n\nTEXT SHOULD MATCH\n";
 
-        System.out.println("High level testing completed.\n");
+        System.out.println("High level testing completed.");
         return 0;
-    }  // high level tests
+    }
 
     static
     int
@@ -68,10 +67,11 @@ class BibleReaderTest {
         System.out.println("User level testing commencing...");
         System.out.println("--> exception expected! <--");
 
-        //testDisplayErrorAndExit();
         test_openBufferedReader_throwsFileNotFoundException();
+        testDisplayErrorAndExit();
         return 0;
     }
+
 
     /* Low level tests... */
 
@@ -87,12 +87,22 @@ class BibleReaderTest {
 
     static
     int
+    test_openBufferedReader_returnsReader() {
+            //todo: register in low-level test list
+        assert Reader.class
+                .isInstance(new Bible().openBufferedReader("kjv.txt"))
+                : "SHOULD RETURN A READER";
+        return 0;
+    }
+
+    static
+    int
     test_openBufferedReader_throwsFileNotFoundException() {
         //TODO: Register in user-level test list
 
         /* Arrange */
         Bible bible = new Bible();
-        BufferedReader result;
+        Reader result;
 
         /* Act */
         result = bible.openBufferedReader("\0");
@@ -105,12 +115,26 @@ class BibleReaderTest {
     testBibleFillBuffer() {
         //todo: register test in low-level test list
         Bible bible = new Bible();
-        BufferedReader bufferedReader = bible.openBufferedReader("blank.txt");
-        assert BufferedReader.class.isInstance(
-                bible.fillBuffer(0L, bufferedReader))
+        Reader reader = bible.openBufferedReader("blank.txt");
+        assert Reader.class.isInstance(
+                bible.fillBuffer(0L, reader))
                 : "SHOULD RETURN A BUFFERED READER INSTANCE";
         return 0;
     }
+
+//    static
+//    int
+//    test_Bible_FillBuffer_withNull() {
+//        //todo: register test in low-level test list
+//        /* Arrange */
+//        Bible bible = new Bible();
+//        BufferedReader bufferedReader = null;
+//        /* Act */
+//        bufferedReader = bible.fillBuffer(0L, bufferedReader);
+//        /* Assert */
+//
+//        return 0;
+//    }
 
     static
     void
