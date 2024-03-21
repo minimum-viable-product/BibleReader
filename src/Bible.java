@@ -41,7 +41,7 @@ class Bible {
         else if (chapter == 3) location = 0x12911L;
 
         // openAndFillBuffer
-        Reader reader = openBufferedReader("kjv.txt");  // null?
+        Reader reader = openBufferedReader("../data/kjv.txt");  // null?
 
         fillBuffer(location, reader);
 

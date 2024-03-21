@@ -1,1 +1,9 @@
 *.class
+
+data/**
+spikes/**
+swing/**
+
+todo.txt
+
+!kjv.txt
