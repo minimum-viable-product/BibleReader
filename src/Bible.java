@@ -67,12 +67,6 @@ class Bible {
         return bufferedReader;  // or character buffer, instead?
     }
 
-    static
-    void
-    DisplayErrorAndExit(Exception exception) {
-        System.err.println(exception);
-        System.exit(1);
-    }
 
     //void
     //findBooks() {

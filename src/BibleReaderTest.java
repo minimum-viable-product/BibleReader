@@ -13,8 +13,8 @@ class BibleReaderTest {
         runLowLevelTests();
         runHighLevelTests();
         runUserLevelTests();
-        //System.out.println("All unit tests passed.");
-    }  // main
+        System.out.println("All tests passed.");
+    }
 
     static
     int
@@ -64,11 +64,25 @@ class BibleReaderTest {
     static
     int
     runUserLevelTests() {
-        System.out.println("User level testing commencing...");
-        System.out.println("--> exception expected! <--");
+        String[] tests = new String[] {
+                "test_Bible_DisplayErrorAndExit",
+                "test_openBufferedReader_throwsFileNotFoundException"
+        };
 
-        test_openBufferedReader_throwsFileNotFoundException();
-        testDisplayErrorAndExit();
+        try {
+            for (String methodName : tests) {
+                Process process = new ProcessBuilder(
+                        "java",
+                        "ExceptionTests", /* <== Called via reflection! */
+                        methodName).start();
+                int processReturnCode = process.waitFor();
+                if (processReturnCode == 0) throw new Exception(
+                        "\n\t"+
+                        "ExceptionTests: RETURN CODE SHOULD BE NON-ZERO in..."+
+                        "\n\t\t"+ methodName);
+            }
+        } catch (Exception e) { System.err.println(e); System.exit(1); }
+
         return 0;
     }
 
@@ -123,9 +137,9 @@ class BibleReaderTest {
     }
 
 
-    static
-    void
-    testDisplayErrorAndExit() {  // INTERGRATION / USER LEVEL ?!
-        Bible.DisplayErrorAndExit(new Exception());
-    }
+    //static
+    //void
+    //test_Bible_DisplayErrorAndExit() {  // INTERGRATION / USER LEVEL ?!
+    //    Bible.DisplayErrorAndExit(new Exception());
+    //}
 }
