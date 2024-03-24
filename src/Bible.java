@@ -11,16 +11,17 @@ class Bible {
     mCharBuffer = new char[5504282];
 
     Reader
-    openBufferedReader(String filename) {
-        BufferedReader bufferedReader = null;
+    openReader(String filename) {
+        Reader reader = null;
         try {
-            bufferedReader = new BufferedReader(new FileReader(filename));
+            //bufferedReader = new BufferedReader(new FileReader(filename));
+            reader = new FileReader(filename);
         } catch (FileNotFoundException e) {
             System.err.println(e);  //DEBUG!
             //DisplayErrorAndExit(e);
         }
 
-        return bufferedReader;
+        return reader;
     }
 
     String
@@ -41,7 +42,7 @@ class Bible {
         else if (chapter == 3) location = 0x12911L;
 
         // openAndFillBuffer
-        Reader reader = openBufferedReader("../data/kjv.txt");  // null?
+        Reader reader = openReader("../data/kjv.txt");  // null?
 
         fillBuffer(location, reader);
 
