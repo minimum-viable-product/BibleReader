@@ -17,9 +17,8 @@ class Bible {
             //bufferedReader = new BufferedReader(new FileReader(filename));
             reader = new FileReader(filename);
         } catch (FileNotFoundException e) {
-            System.err.println(e);  //DEBUG!
-            //DisplayErrorAndExit(e);
-        }
+            System.err.println(e); }
+            //System.exit(1);
 
         return reader;
     }
@@ -49,7 +48,7 @@ class Bible {
         String string = new String(mCharBuffer);
         string = string
                 .substring(0, string.indexOf('^'))
-                .replace("\n", "")
+                .replace('\n', (char)0)
                 .replaceAll("   ", " ")
                 .trim()
                 ;

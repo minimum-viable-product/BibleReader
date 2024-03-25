@@ -10,7 +10,7 @@ class TestRunner {
     main(String[] args) {
         runLowLevelTests();
         runHighLevelTests();
-        System.out.println("All tests passed.");
+        System.out.println("All tests pass!");
     }
 
     static int
