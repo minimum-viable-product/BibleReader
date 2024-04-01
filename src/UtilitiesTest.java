@@ -1,18 +1,23 @@
 import java.io.Reader;
 
+//TODO: Rename this class to something that speaks more to it's
+//      actual purpose...  ie. ErrorExit ?
 class UtilitiesTest {
-    public static void main(String[] args) {
-        test_BibleFillBuffer();
+    public static void
+    main(String[] args) {
+        //TestRunner.requireAssertEnabled();
+        //TestRunner.runAllTests(UtilitiesTest.class);
+        if (args.length > 0) {
+            Process process = NewTestProcess.run(UtilitiesTest.class, args);
+            NewTestProcess.checkReturnCode(process, args);
+        }
     }
 
-    static int
-    test_BibleFillBuffer() {
-        //todo: register test in low-level test list
-        Bible bible = new Bible();
-        Reader reader = bible.openReader("../data/blank.txt");
-        assert Reader.class.isInstance(
-                bible.fillBuffer(0L, reader))
-                : "SHOULD RETURN A BUFFERED READER INSTANCE";
-        return 0;
+    public static int
+    test_Bible_DisplayErrorAndExit() {
+        //System.out.println("In error / exit test!");
+        Utilities.DisplayErrorAndExit(
+                new Exception("This is a new exception..."));
+        return -2;
     }
 }

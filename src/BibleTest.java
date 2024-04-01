@@ -10,6 +10,7 @@ class BibleTest {
 
     public static void
     main(String[] args) {
+        test_openReader_throwsFileNotFoundException();
         runTests();
         System.out.println("Bible tests passed.");
     }
@@ -47,11 +48,9 @@ class BibleTest {
     }
 
 
-    /* Low level tests... */
-
-    static
-    int
-    test_openBufferedReader_throwsFileNotFoundException() {
+    /** Low level tests... */
+    static int
+    test_openReader_throwsFileNotFoundException() {
         // THIS TEST IS NOW HANDLED ELSEWHERE!
         //TODO: Register in user-level test list
 
@@ -64,4 +63,16 @@ class BibleTest {
 
         return 0;
     }
+
+    static int
+    test_BibleFillBuffer() {
+        //todo: register test in low-level test list
+        Bible bible = new Bible();
+        Reader reader = bible.openReader("../data/blank.txt");
+        assert Reader.class.isInstance(
+                bible.fillBuffer(0L, reader))
+                : "SHOULD RETURN A BUFFERED READER INSTANCE";
+        return 0;
+    }
+
 }

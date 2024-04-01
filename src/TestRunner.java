@@ -1,5 +1,9 @@
+import java.lang.reflect.Method;
+import java.util.concurrent.TimeUnit;
+
 class TestRunner {
-    static {
+    static void
+    requireAssertEnabled() {
         boolean isAssertEnabled = false;
         assert isAssertEnabled = true;
         if (! isAssertEnabled) throw new RuntimeException(
@@ -8,6 +12,7 @@ class TestRunner {
 
     public static void
     main(String[] args) {
+        requireAssertEnabled();
         runLowLevelTests();
         runHighLevelTests();
         System.out.println("All tests pass!");
@@ -15,7 +20,6 @@ class TestRunner {
 
     static int
     runLowLevelTests() {
-        ExceptionTests.main(new String[0]);
         UtilitiesTest.main(new String[0]);
         System.out.println("Low level testing completed.");
         return 0;
@@ -23,33 +27,80 @@ class TestRunner {
 
     static int
     runHighLevelTests() {
-        BibleTest.main(null);
+        BibleTest.main(new String[0]);
         System.out.println("High level testing completed.");
         return 0;
     }
 
+    static int
+    runAllTests(Class cls) {
+        Method[] methods = cls.getMethods();
+        int testResult = -1;  //TODO: enum { NO_OP=-1, SUCCESS=0, FAIL=1 }
+
+        /* Invoke all public methods on class (besides `main`) */
+        for (int i=0; i < methods.length; ++i) {
+            if (methods[i].getDeclaringClass() == cls
+                    && ! methods[i].getName().equals("main"))
+            {
+                try {
+                    testResult = (int) methods[i].invoke(
+                            new Object(), new Object[0]
+                    );
+                } catch (Exception e) {
+                    System.err.println("runAllTests: Unexpected Exception!");
+                    System.err.println(e +": "+ methods[i].getName());
+                    System.exit(1);  // !!
+                }
+
+                if (testResult != 0) {
+                    System.err.println(methods[i].getName() +" <- Failed Test!");
+                }
+            }
+        }
+
+        return 0;
+    }
+
+//    /** Invoke single public method in a new process. */
 //    static int
-//    runExceptionTests() {
-//        String[] tests = new String[] {
-//                "test_Bible_DisplayErrorAndExit",
-//                "test_openBufferedReader_throwsFileNotFoundException"
-//        };
+//    runInNewProcess(Method method, int expectedStatusCode) {
+//        /* Arrange */
+//        int statusCode = -1;
+//        //boolean isProcessFinished = false;
 //
+//        /* Act */
 //        try {
-//            for (String methodName : tests) {
-//                Process process = new ProcessBuilder(
-//                        "java",
-//                        "ExceptionTests", /* <== Called via reflection! */
-//                        methodName).start();
-//                int processReturnCode = process.waitFor();
-//                if (processReturnCode != 1) throw new Exception(
-//                        "\n\t"+
-//                        "ExceptionTests: RETURN CODE SHOULD BE 1 in..."+
-//                        "\n\t\t"+ methodName);
-//            }
-//        } catch (Exception e) { System.err.println(e); }//System.exit(1); }
+//            Process process = Runtime.getRuntime().exec(new String[] {
+//                    "java",
+//                    method.getDeclaringClass().getName(),
+//                    method.getName()
+//            });
+//            statusCode = process.waitFor();
+//            System.out.println("statusCode: "+ statusCode);
+//        } catch (Exception e) {
+//            System.err.println("TestRunner.runInNewProcess: "+ e);
+//            System.exit(1);
+//        }
 //
-//        System.out.println("Exception testing completed.");
+//        /* Assert */
+//        if (statusCode != expectedStatusCode) {
+//            System.err.println("PROCESS STATUS CODE SHOULD BE: 1");
+//            return 1;
+//        }
 //        return 0;
 //    }
+
+    static
+    Method
+    getMethod(Class<?> cls, String methodName, Class[] params) {
+        Method resultingMethod = null;
+        try {
+            resultingMethod = cls.getMethod(methodName, params);
+        } catch (Exception e) {
+            System.err.println("TestRunner.getMethod: "+ e);
+            System.exit(1);
+        }
+
+        return resultingMethod;
+    }
 }

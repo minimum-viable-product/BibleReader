@@ -1,5 +1,3 @@
-import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -9,19 +7,6 @@ import java.io.Reader;
 class Bible {
     char[]
     mCharBuffer = new char[5504282];
-
-    Reader
-    openReader(String filename) {
-        Reader reader = null;
-        try {
-            //bufferedReader = new BufferedReader(new FileReader(filename));
-            reader = new FileReader(filename);
-        } catch (FileNotFoundException e) {
-            System.err.println(e); }
-            //System.exit(1);
-
-        return reader;
-    }
 
     String
     openBook() {
@@ -48,7 +33,7 @@ class Bible {
         String string = new String(mCharBuffer);
         string = string
                 .substring(0, string.indexOf('^'))
-                .replace('\n', (char)0)
+                .replace("\n", "")
                 .replaceAll("   ", " ")
                 .trim()
                 ;
@@ -56,15 +41,28 @@ class Bible {
     }
 
     Reader
-    fillBuffer(long location, Reader bufferedReader) {
+    openReader(String filename) {
+        Reader reader = null;
         try {
-            bufferedReader.skip(location);
-            bufferedReader.read(mCharBuffer, 0, 512);
+            //bufferedReader = new BufferedReader(new FileReader(filename));
+            reader = new FileReader(filename);
+        } catch (FileNotFoundException e) {
+            System.err.println(e); }
+            //System.exit(1);
+
+        return reader;
+    }
+
+    Reader
+    fillBuffer(long location, Reader reader) {
+        try {
+            reader.skip(location);
+            reader.read(mCharBuffer, 0, 512);
             //throw new IOException();  //DEBUG
         } catch (IOException e) {
             System.err.println(e); }
             //System.exit(1);  //TODO: this should be inside above bracket!
-        return bufferedReader;  // or character buffer, instead?
+        return reader;  // or character buffer, instead?
     }
 
 
