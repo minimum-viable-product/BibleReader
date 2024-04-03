@@ -1,3 +1,5 @@
+import java.io.*;
+
 class NewTestProcess {
     static Process
     run(Class cls, String[] args) {
@@ -21,24 +23,25 @@ class NewTestProcess {
 
     static void
     checkReturnCode(Process process, String[] args) {
-        long returnCode = Long.MIN_VALUE;
-        long expectedCode = Long.MIN_VALUE;
+        long actualReturnCode = Long.MIN_VALUE;
+        long expectedReturnCode = Long.MIN_VALUE;
+
         try {
-            expectedCode = Integer.parseInt(args[1]);
+            expectedReturnCode = Integer.parseInt(args[1]);
         } catch (ArrayIndexOutOfBoundsException e) {
             System.err.println(e +"\nEXPECTED RETURN CODE ARGUMENT");
             System.exit(1);
         }
 
         try {
-            returnCode = process.waitFor();
+            actualReturnCode = process.waitFor();
         } catch (InterruptedException e) {
             System.err.println(e);
             System.exit(1);
         }
 
-        if (returnCode != expectedCode) {
-            System.err.println("Unexpected return code: "+ returnCode);
+        if (actualReturnCode != expectedReturnCode) {
+            System.err.println("Unexpected return code: "+ actualReturnCode);
             System.exit(1);
         }
 

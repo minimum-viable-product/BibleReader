@@ -9,7 +9,7 @@ class BibleTest {
     }
 
     public static void
-    main(String[] args) {
+    main(String[] args) { //TODO: reflection?
         test_openReader_throwsFileNotFoundException();
         runTests();
         System.out.println("Bible tests passed.");
