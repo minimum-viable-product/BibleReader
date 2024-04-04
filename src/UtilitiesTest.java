@@ -9,21 +9,30 @@ class UtilitiesTest {
             Process process = NewTestProcess.run(UtilitiesTest.class, args);
             NewTestProcess.checkReturnCode(process, args);
         } else if (args.length == 1) {
+            String methodName = args[0];
             try {
-                UtilitiesTest.class.getMethod(args[0], new Class[0])
+                UtilitiesTest.class.getMethod(methodName, new Class[0])
                         .invoke(new Object(), new Object[0]);
             } catch (Exception e) {
                 System.err.println(e);
                 System.exit(1);
             }
-        } // TODO: else getMethods & invoke all methods (in new processes)
+        } else if (args.length == 0) {
+            // TODO: else getMethods & invoke all methods (in new processes)
+        } else {
+            System.err.println("TOO MANY ARGUMENTS!");
+            System.exit(1);
+        }
     }
 
-    public static int
-    test_Bible_DisplayErrorAndExit() {
-        //System.out.println("In error / exit test!");
-        Utilities.DisplayErrorAndExit(
-                new Exception("This is a test exception..."));
-        return -2;
+    class DisplayErrorAndExitTest implements Runnable {
+        public static final int
+        expectedReturnValue = 1;
+
+        public void
+        run() {
+            Utilities.DisplayErrorAndExit(
+                    new Exception("This is an expected test exception..."));
+        }
     }
 }

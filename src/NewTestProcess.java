@@ -29,7 +29,7 @@ class NewTestProcess {
         try {
             expectedReturnCode = Integer.parseInt(args[1]);
         } catch (ArrayIndexOutOfBoundsException e) {
-            System.err.println(e +"\nEXPECTED RETURN CODE ARGUMENT");
+            System.err.println(e +"\nEXPECTED ARGUMENT: RETURN CODE");
             System.exit(1);
         }
 
@@ -41,7 +41,7 @@ class NewTestProcess {
         }
 
         if (actualReturnCode != expectedReturnCode) {
-            System.err.println("Unexpected return code: "+ actualReturnCode);
+            System.err.println("UNEXPECTED RETURN CODE: "+ actualReturnCode);
             System.exit(1);
         }
 
