@@ -2,16 +2,16 @@ import java.io.*;
 
 class NewTestProcess {
     static Process
-    run(Class cls, String[] args) {
-        String methodName = args[0];
+    run(Class cls) {
         Runtime runtime = Runtime.getRuntime();
-        Process process = null;
+        Process process = null;  // TODO: No nulls!
 
         try {
             process = runtime.exec(new String[] {
                     "java",
                     cls.getName(),
-                    methodName
+                    "run",
+                    "--dont-launch-new-process"
             });
         } catch (Exception e) {
             System.err.println(e);
@@ -22,16 +22,8 @@ class NewTestProcess {
     }
 
     static void
-    checkReturnCode(Process process, String[] args) {
+    checkReturnCode(Process process, int expectedReturnCode) {
         long actualReturnCode = Long.MIN_VALUE;
-        long expectedReturnCode = Long.MIN_VALUE;
-
-        try {
-            expectedReturnCode = Integer.parseInt(args[1]);
-        } catch (ArrayIndexOutOfBoundsException e) {
-            System.err.println(e +"\nEXPECTED ARGUMENT: RETURN CODE");
-            System.exit(1);
-        }
 
         try {
             actualReturnCode = process.waitFor();
