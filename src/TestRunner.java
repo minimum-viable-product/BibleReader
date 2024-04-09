@@ -61,34 +61,6 @@ class TestRunner {
         return 0;
     }
 
-//    /** Invoke single public method in a new process. */
-//    static int
-//    runInNewProcess(Method method, int expectedStatusCode) {
-//        /* Arrange */
-//        int statusCode = -1;
-//        //boolean isProcessFinished = false;
-//
-//        /* Act */
-//        try {
-//            Process process = Runtime.getRuntime().exec(new String[] {
-//                    "java",
-//                    method.getDeclaringClass().getName(),
-//                    method.getName()
-//            });
-//            statusCode = process.waitFor();
-//            System.out.println("statusCode: "+ statusCode);
-//        } catch (Exception e) {
-//            System.err.println("TestRunner.runInNewProcess: "+ e);
-//            System.exit(1);
-//        }
-//
-//        /* Assert */
-//        if (statusCode != expectedStatusCode) {
-//            System.err.println("PROCESS STATUS CODE SHOULD BE: 1");
-//            return 1;
-//        }
-//        return 0;
-//    }
 
     static
     Method
