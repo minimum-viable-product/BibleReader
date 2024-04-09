@@ -5,21 +5,21 @@ class NewTestProcess {
     run(Class cls) {
         Runtime runtime = Runtime.getRuntime();
         Process process = null;  // TODO: No nulls!
+        String className = cls.getName();
+
+        System.out.println("\nRunning "+ className +" in a new process...");
 
         try {
             process = runtime.exec(new String[] {
                     "java",
-                    cls.getName()
+                    className
             });
         } catch (Exception e) {
             System.err.println(e);
             System.exit(1);
         }
 
-        //return process;
         NewTestProcess.checkReturnCode(process, cls);
-        //        UtilitiesTest.DisplayErrorAndExitTest.class.expectedReturnValue);
-
     }
 
     static void
@@ -45,13 +45,11 @@ class NewTestProcess {
             System.exit(1);
         }
 
-        checkReturnCode(actualReturnCode, expectedReturnCode);
-    }
+        System.out.println("Expected return code: "+ expectedReturnCode);
+        System.out.println("Actual return code: "+ actualReturnCode);
 
-    static void
-    checkReturnCode(long actualReturnCode, long expectedReturnCode) {
         if (actualReturnCode != expectedReturnCode) {
-            System.err.println("UNEXPECTED RETURN CODE: "+ actualReturnCode);
+            System.err.println("UNEXPECTED RETURN CODE!");
             System.exit(1);
         }
     }

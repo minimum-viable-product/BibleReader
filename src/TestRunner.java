@@ -10,6 +10,11 @@ class TestRunner {
     }
 
     public static void
+    assertThat(boolean assertion, String detailMessage) {
+        if (! assertion) throw new AssertionError(detailMessage);
+    }
+
+    public static void
     main(String[] args) {
         requireAssertEnabled();
         runLowLevelTests();
@@ -26,7 +31,7 @@ class TestRunner {
 
     static int
     runHighLevelTests() {
-        BibleTest.main(new String[0]);
+        BibleTests.main(new String[0]);
         System.out.println("High level testing completed.");
         return 0;
     }

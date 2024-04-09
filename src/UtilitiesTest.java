@@ -3,8 +3,6 @@
 class UtilitiesTest {
     public static void
     main(String[] args) {
-        //TestRunner.requireAssertEnabled();
-        //TestRunner.runAllTests(UtilitiesTest.class);
         Class[] classes = UtilitiesTest.class.getDeclaredClasses();
 
         if (args.length == 1) {
@@ -13,7 +11,6 @@ class UtilitiesTest {
 
             for (int i=0; i < classes.length; ++i) {
                 if (classes[i].getName().equals(className)) {
-                    //System.out.println(classes[i].getName());
                     cls = classes[i];
                     break;
                 }
@@ -38,7 +35,7 @@ class UtilitiesTest {
 
         public static void
         main(String[] args) {
-            Utilities.DisplayErrorAndExit(
+            Utilities.displayErrorAndExit(
                     new Exception("This is an expected test exception..."));
         }
     }
