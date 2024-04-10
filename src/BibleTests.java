@@ -127,13 +127,19 @@ class BibleTests {
         return 0;
     }
 
-    //public static int
-    //test_openBook_returnsCorrectVerse_givenBooksAndVerse() {
-    //    assert new Bible()
-    //        .openBook("genesis", 1)
-    //        .equals("In the beginning God created the heaven and the earth.")
-    //        : "\n\nTEXT SHOULD MATCH\n";
-    //}
+    public static int
+    test_openBook_returnsGenesisFirstVerse_givenBookAndVerse() {
+        /* Arrange */
+        String result;
+        /* Act */
+        result = Bible.openBook("genesis", 1);
+        /* Assert */
+        TestRunner.assertThat(
+            result.equals("In the beginning God created the heaven and the earth."),
+            "\n\nTEXT SHOULD MATCH\n"
+        );
+        return 0;
+    }
 
     //public static int
     //test_openBook_() {

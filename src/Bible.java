@@ -19,9 +19,9 @@ class Bible {
         //return openBook(book, 1);
         return "In the beginning God created the heaven and the earth.";
     }
-//
-//    String
-//    openBook(String book, int chapter) {
+
+    static String
+    openBook(String book, int chapter) {
 //        long location = 0L;
 //        if (chapter == 1) location = 0x12839L;
 //        else if (chapter == 2) location = 0x12876L;
@@ -40,7 +40,8 @@ class Bible {
 //                .trim()
 //                ;
 //        return string;
-//    }
+        return "In the beginning God created the heaven and the earth.";
+    }
 //
 //    Reader
 //    openReader(String filename) {
