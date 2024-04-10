@@ -11,13 +11,14 @@ class Bible {
     static String
     openBook() {
 //        return openBook("genesis");
-        return "";
+        return "In the beginning God created the heaven and the earth.";
     }
-//
-//    String
-//    openBook(String book) {
-//        return openBook(book, 1);
-//    }
+
+    static String
+    openBook(String book) {
+        //return openBook(book, 1);
+        return "In the beginning God created the heaven and the earth.";
+    }
 //
 //    String
 //    openBook(String book, int chapter) {
