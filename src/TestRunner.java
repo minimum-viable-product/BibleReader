@@ -53,9 +53,9 @@ class TestRunner {
                     && ! methods[i].getName().equals("main"))
             {
                 try {
-                    testResult = (int) methods[i].invoke(
+                    testResult = ((Integer) methods[i].invoke(
                             new Object(), new Object[0]
-                    );
+                    )).intValue();
                 } catch (Exception e) {
                     System.err.println("runAllTests: Unexpected Exception!");
                     System.err.println(e +": "+ methods[i].getName());
@@ -74,11 +74,11 @@ class TestRunner {
 
     static
     Method
-    getMethod(Class<?> cls, String methodName, Class[] params) {
+    getMethod(Class cls, String methodName, Class[] params) {
         Method resultingMethod = null;
         try {
             resultingMethod = cls.getMethod(methodName, params);
-        } catch (Exception e) {
+        } catch (NoSuchMethodException e) {
             System.err.println("TestRunner.getMethod: "+ e);
             System.exit(1);
         }
