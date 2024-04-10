@@ -5,7 +5,10 @@ class Utilities {
     //TODO: offer overload that takes a string instead of an exception?
     //TODO: offer overload that doesn't require exception arg?
 
-    static void
+    /** Called when a reflectively invoked method
+     *  throws an AssertionError.
+     */
+    static void  //TODO: Disable and test textual output back into existance!
     displayErrorAndExit(Throwable throwable) {
         System.err.println(new Exception(throwable).getLocalizedMessage());
         StackTraceElement[] stackTrace = throwable.getStackTrace();
@@ -13,7 +16,7 @@ class Utilities {
         System.exit(1);
     }
 
-    static void
+    static void  //TODO: Disable and test textual output back into existance!
     displayErrorAndExit(Exception exception) {
         //exception.printStackTrace();
         System.err.println("\n"+ exception.getStackTrace()[0] +
