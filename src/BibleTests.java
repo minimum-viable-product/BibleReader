@@ -101,22 +101,15 @@ class BibleTests {
 
     public static int
     test_openBook_returnsGenesisFirstVerse_givenNoArguments() {
-//        //assert new Bible()
-//        //        .openBook()
-//        //        .equals("In the beginning God created the heaven and the earth.")
-//        //        : "\n\nTEXT SHOULD MATCH\n";
         /* Arrange */
         String result;
-
         /* Act */
         result = Bible.openBook();
-
         /* Assert */
         TestRunner.assertThat(
             result.equals("In the beginning God created the heaven and the earth."),
             "\n\nTEXT SHOULD MATCH\n"
         );
-
         return 0;
     }
 
@@ -124,16 +117,13 @@ class BibleTests {
     test_openBook_returnsGenesisFirstVerse_givenOnlyBookArgument() {
         /* Arrange */
         String result;
-
         /* Act */
         result = Bible.openBook("genesis");
-
         /* Assert */
         TestRunner.assertThat(
             result.equals("In the beginning God created the heaven and the earth."),
             "\n\nTEXT SHOULD MATCH\n"
         );
-
         return 0;
     }
 
