@@ -2,13 +2,14 @@
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
+
 class BibleTests {
-    //static {
-    //    boolean isAssertEnabled = false;
-    //    assert isAssertEnabled = true;
-    //    if (! isAssertEnabled) throw new RuntimeException(
-    //            "\n\nASSERTIONS MUST BE ENABLED WITH: -ea\n");
-    //}
+    static {
+        boolean isAssertEnabled = false;
+        assert isAssertEnabled = true;
+        if (! isAssertEnabled) throw new RuntimeException(
+                "\n\nASSERTIONS MUST BE ENABLED WITH: -ea\n");
+    }
 
     public static void
     main(String[] args) { //TODO: reflection?
@@ -98,24 +99,26 @@ class BibleTests {
     //    return 0;
     //}
 
-//    public static int
-//    test_openBook_returnsGenesisFirstVerse_givenNoArguments() {
+    public static int
+    test_openBook_returnsGenesisFirstVerse_givenNoArguments() {
 //        //assert new Bible()
 //        //        .openBook()
 //        //        .equals("In the beginning God created the heaven and the earth.")
 //        //        : "\n\nTEXT SHOULD MATCH\n";
-//        /* Arrange */
-//        String result;
-//
-//        /* Act */
-//        result = Bible.openBook();
-//
-//        /* Assert */
-//        assert
-//            result.equals("In the beginning God created the heaven and the earth.");
-//
-//        return 0;
-//    }
+        /* Arrange */
+        String result;
+
+        /* Act */
+        result = Bible.openBook();
+
+        /* Assert */
+        TestRunner.assertThat(
+            result.equals("In the beginning God created the heaven and the earth."),
+            "\n\nTEXT SHOULD MATCH\n"
+        );
+
+        return 0;
+    }
 
     //public static int
     //test_() {

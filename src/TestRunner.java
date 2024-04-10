@@ -1,4 +1,6 @@
 import java.lang.reflect.Method;
+import java.util.Arrays;
+
 
 class TestRunner {
     static void
@@ -11,7 +13,11 @@ class TestRunner {
 
     public static void
     assertThat(boolean assertion, String detailMessage) {
-        if (! assertion) throw new AssertionError(detailMessage);
+        AssertionError assertionError = new AssertionError(detailMessage);
+        StackTraceElement[] stackTrace = assertionError.getStackTrace();
+        System.arraycopy(stackTrace, 1, stackTrace, 0, stackTrace.length-1);
+        assertionError.setStackTrace(stackTrace);
+        if (! assertion) throw assertionError;
     }
 
     public static void
