@@ -1,6 +1,9 @@
 import java.lang.reflect.Method;
 import java.util.Arrays;
 
+//TODO: TestRunner should just use a config file,
+//      or automatically discover tests,
+//      instead of hardcoding each test class name.
 
 class TestRunner {
     static void
@@ -30,7 +33,7 @@ class TestRunner {
 
     static int
     runLowLevelTests() {
-        UtilitiesTest.main(new String[0]);  // TODO
+        ExitTests.main(new String[0]);  // TODO
         System.out.println("Low level testing completed.");
         return 0;
     }

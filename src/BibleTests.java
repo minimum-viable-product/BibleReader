@@ -32,7 +32,7 @@ class BibleTests {
                     /* Invoked method itself threw an exception.
                      * (e.g. an AssertionError)
                      */
-                    Utilities.displayErrorAndExit(e.getTargetException());
+                    Exit.displayError(e.getTargetException());
                 }
             }
         }

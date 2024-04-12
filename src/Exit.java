@@ -1,6 +1,4 @@
-//TODO: Rename this class to something that speaks more to it's
-//      actual purpose...  ie. ErrorExit ?
-class Utilities {
+class Exit {
 
     //TODO: offer overload that takes a string instead of an exception?
     //TODO: offer overload that doesn't require exception arg?
@@ -9,16 +7,14 @@ class Utilities {
      *  throws an AssertionError.
      */
     static void  //TODO: Disable and test textual output back into existance!
-    displayErrorAndExit(Throwable throwable) {
+    displayError(Throwable throwable) {
+        System.err.println("\n"+ throwable.getStackTrace()[0]);
         System.err.println(new Exception(throwable).getLocalizedMessage());
-        StackTraceElement[] stackTrace = throwable.getStackTrace();
-        System.err.println(stackTrace[0]);
         System.exit(1);
     }
 
     static void  //TODO: Disable and test textual output back into existance!
-    displayErrorAndExit(Exception exception) {
-        //exception.printStackTrace();
+    displayError(Exception exception) {
         System.err.println("\n"+ exception.getStackTrace()[0] +
                            "\n"+ exception.getLocalizedMessage()
         );
