@@ -6,14 +6,6 @@ import java.util.Arrays;
 //      instead of hardcoding each test class name.
 
 class TestRunner {
-    static void
-    requireAssertEnabled() {
-        boolean isAssertEnabled = false;
-        assert isAssertEnabled = true;
-        if (! isAssertEnabled) throw new RuntimeException(
-                "\n\nASSERTIONS MUST BE ENABLED WITH: -ea\n");
-    }
-
     public static void
     assertThat(boolean assertion, String detailMessage) {
         AssertionError assertionError = new AssertionError(detailMessage);
@@ -25,7 +17,6 @@ class TestRunner {
 
     public static void
     main(String[] args) {
-        requireAssertEnabled();
         runLowLevelTests();
         runHighLevelTests();
         System.out.println("All tests pass!");
@@ -72,20 +63,5 @@ class TestRunner {
         }
 
         return 0;
-    }
-
-
-    static
-    Method
-    getMethod(Class cls, String methodName, Class[] params) {
-        Method resultingMethod = null;
-        try {
-            resultingMethod = cls.getMethod(methodName, params);
-        } catch (NoSuchMethodException e) {
-            System.err.println("TestRunner.getMethod: "+ e);
-            System.exit(1);
-        }
-
-        return resultingMethod;
     }
 }
