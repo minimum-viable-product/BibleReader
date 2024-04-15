@@ -36,32 +36,32 @@ class TestRunner {
         return 0;
     }
 
-    static int
-    runAllTests(Class cls) {
-        Method[] methods = cls.getMethods();
-        int testResult = -1;  //TODO: enum { NO_OP=-1, SUCCESS=0, FAIL=1 }
-
-        /* Invoke all public methods on class (besides `main`) */
-        for (int i=0; i < methods.length; ++i) {
-            if (methods[i].getDeclaringClass() == cls
-                    && ! methods[i].getName().equals("main"))
-            {
-                try {
-                    testResult = ((Integer) methods[i].invoke(
-                            new Object(), new Object[0]
-                    )).intValue();
-                } catch (Exception e) {
-                    System.err.println("runAllTests: Unexpected Exception!");
-                    System.err.println(e +": "+ methods[i].getName());
-                    System.exit(1);  // !!
-                }
-
-                if (testResult != 0) {
-                    System.err.println(methods[i].getName() +" <- Failed Test!");
-                }
-            }
-        }
-
-        return 0;
-    }
+//    static int
+//    runAllTests(Class cls) {
+//        Method[] methods = cls.getMethods();
+//        int testResult = -1;  //TODO: enum { NO_OP=-1, SUCCESS=0, FAIL=1 }
+//
+//        /* Invoke all public methods on class (besides `main`) */
+//        for (int i=0; i < methods.length; ++i) {
+//            if (methods[i].getDeclaringClass() == cls
+//                    && ! methods[i].getName().equals("main"))
+//            {
+//                try {
+//                    testResult = ((Integer) methods[i].invoke(
+//                            new Object(), new Object[0]
+//                    )).intValue();
+//                } catch (Exception e) {
+//                    System.err.println("runAllTests: Unexpected Exception!");
+//                    System.err.println(e +": "+ methods[i].getName());
+//                    System.exit(1);  // !!
+//                }
+//
+//                if (testResult != 0) {
+//                    System.err.println(methods[i].getName() +" <- Failed Test!");
+//                }
+//            }
+//        }
+//
+//        return 0;
+//    }
 }
