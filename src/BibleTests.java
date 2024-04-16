@@ -1,16 +1,16 @@
 class BibleTests {
     public static void
-    main(String[] args) { //TODO: reflection?
+    main(String[] args) {
         Test.run(BibleTests.class, args);
     }
 
 
     public static int
-    test_openBook_returnsGenesisFirstVerse_givenNoArguments() {
+    test_open_returnsGenesisFirstVerse_givenNoArguments() {
         /* Arrange */
         String result;
         /* Act */
-        result = Bible.openBook();
+        result = Bible.open();
         /* Assert */
         TestRunner.assertThat(
             result.equals("In the beginning God created the heaven and the earth."),
@@ -20,11 +20,11 @@ class BibleTests {
     }
 
     public static int
-    test_openBook_returnsGenesisFirstVerse_givenOnlyBookArgument() {
+    test_open_returnsGenesisFirstVerse_givenOnlyBookArgument() {
         /* Arrange */
         String result;
         /* Act */
-        result = Bible.openBook("genesis");
+        result = Bible.open("genesis");
         /* Assert */
         TestRunner.assertThat(
             result.equals("In the beginning God created the heaven and the earth."),
@@ -34,14 +34,28 @@ class BibleTests {
     }
 
     public static int
-    test_openBook_returnsGenesisFirstVerse_givenBookAndVerse() {
+    test_open_returnsGenesisFirstVerse_givenBookAndVerse() {
         /* Arrange */
         String result;
         /* Act */
-        result = Bible.openBook("genesis", 1);
+        result = Bible.open("genesis", 1);
         /* Assert */
         TestRunner.assertThat(
             result.equals("In the beginning God created the heaven and the earth."),
+            "\n\nTEXT SHOULD MATCH\n"
+        );
+        return 0;
+    }
+
+    public static int
+    test_open_returnsExodus2Verse3_givenBookChapterVerse() {
+        /* Arrange */
+        String result;
+        /* Act */
+        result = Bible.open("exodus", 2, 3);
+        /* Assert */
+        TestRunner.assertThat(
+            result.equals("And when she could not longer hide him, she took for him an ark of bulrushes, and daubed it with slime and with pitch, and put the child therein; and she laid it in the flags by the river's brink."),
             "\n\nTEXT SHOULD MATCH\n"
         );
         return 0;

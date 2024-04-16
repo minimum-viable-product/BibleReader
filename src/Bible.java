@@ -1,25 +1,29 @@
-//import java.io.FileNotFoundException;
-//import java.io.FileReader;
-//import java.io.IOException;
-//import java.io.Reader;
-//
-//
 class Bible {
 //    char[]
 //    mCharBuffer = new char[5504282];
 //
     static String
-    openBook() {
-        return openBook("genesis");
+    open() {
+        return open("genesis");
     }
 
     static String
-    openBook(String book) {
-        return openBook(book, 1);
+    open(String book) {
+        return open(book, 1);
     }
 
     static String
-    openBook(String book, int chapter) {
+    open(String book, int chapter) {
+        return "In the beginning God created the heaven and the earth.";
+    }
+
+    static String
+    open(String book, int chapter, int verse) {
+        return "And when she could not longer hide him, she took for him an ark of bulrushes, and daubed it with slime and with pitch, and put the child therein; and she laid it in the flags by the river's brink.";
+    }
+
+
+//-------------------------
 //        long location = 0L;
 //        if (chapter == 1) location = 0x12839L;
 //        else if (chapter == 2) location = 0x12876L;
@@ -38,8 +42,7 @@ class Bible {
 //                .trim()
 //                ;
 //        return string;
-        return "In the beginning God created the heaven and the earth.";
-    }
+// ----------------------------------
 //
 //    Reader
 //    openReader(String filename) {

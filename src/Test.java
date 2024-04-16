@@ -7,7 +7,7 @@ import java.lang.reflect.Method;
 class Test {
 
     /**
-     *
+     *  // TODO: Build up a list of methods and call them randomly?
      */
     static void
     run(Class cls, String[] args) {
