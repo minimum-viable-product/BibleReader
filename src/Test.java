@@ -1,4 +1,5 @@
-import java.io.*;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
 //TODO: Side-effecting / `void` methods okay? Or should return 0/1 instead?
 //TODO: Test-drive the above feature into existence?
@@ -10,6 +11,33 @@ class Test {
      */
     static void
     run(Class cls, String[] args) {
+        /* Get declared test methods */
+        Method[] methods = cls.getDeclaredMethods();
+
+        /* Call each test method in a loop */
+        for (int i=0; i < methods.length; ++i) {
+            if (methods[i].getName().startsWith("test")) {
+                try {
+                    methods[i].invoke(new Object(), new Object[0]);
+                } catch (IllegalAccessException e) {
+                    System.err.println(e);
+                    System.exit(1);
+                } catch (InvocationTargetException e) {
+                    /* Invoked method itself threw an exception.
+                     * (e.g. an AssertionError)
+                     */
+                    Exit.displayError(e.getTargetException());
+                }
+            }
+        }
+    }
+
+
+    /**
+     *
+     */
+    static void
+    runNested(Class cls, String[] args) {
         /* Get array of nested test classes */
         Class[] classes = cls.getDeclaredClasses();
 

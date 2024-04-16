@@ -16,6 +16,11 @@ class TestRunner {
 
     public static void
     main(String[] args) {
+        if (args.length == 0) {
+            System.err.println("ERROR: Missing package name argument");
+            System.exit(1);
+        }
+
         String packageName = args[0];
 
         runAllTestClasses(packageName);

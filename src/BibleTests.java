@@ -1,76 +1,8 @@
-//import java.io.*;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-
-
 class BibleTests {
-    //static {
-    //    boolean isAssertEnabled = false;
-    //    assert isAssertEnabled = true;
-    //    if (! isAssertEnabled) throw new RuntimeException(
-    //            "\n\nASSERTIONS MUST BE ENABLED WITH: -ea\n");
-    //}
-
     public static void
     main(String[] args) { //TODO: reflection?
-        //test_openReader_throwsFileNotFoundException();
-        //runTests();
-        //System.out.println("Bible tests passed.");
-
-        //get declared test methods
-        Method[] methods = BibleTests.class.getDeclaredMethods();
-
-        //call each test method in a loop
-        for (int i=0; i < methods.length; ++i) {
-            if (methods[i].getName().startsWith("test")) {
-                try {
-                    methods[i].invoke(new Object(), new Object[0]);
-                } catch (IllegalAccessException e) {
-                    System.err.println(e);
-                    System.exit(1);
-                } catch (InvocationTargetException e) {
-                    /* Invoked method itself threw an exception.
-                     * (e.g. an AssertionError)
-                     */
-                    Exit.displayError(e.getTargetException());
-                }
-            }
-        }
-
+        Test.run(BibleTests.class, args);
     }
-
-    static int
-    runTests() {
-        //assert new Bible()
-        //        .openBook("genesis", 1)
-        //        .equals("In the beginning God created the heaven and the earth.")
-        //        : "\n\nTEXT SHOULD MATCH\n";
-
-        //assert new Bible()
-        //        .openBook("genesis")
-        //        .equals("In the beginning God created the heaven and the earth.")
-        //        : "\n\nTEXT SHOULD MATCH\n";
-
-        //assert new Bible()
-        //        .openBook()
-        //        .equals("In the beginning God created the heaven and the earth.")
-        //        : "\n\nTEXT SHOULD MATCH\n";
-
-        //assert new Bible()
-        //        .openBook("genesis", 2)
-        //        .equals("And the earth was without form, and void; and darkness was upon the "+
-        //                "face of the deep. And the Spirit of God moved upon the face of the "+
-        //                "waters.")
-        //        : "\n\nTEXT SHOULD MATCH\n";
-
-        //assert new Bible()
-        //        .openBook("genesis", 3)
-        //        .equals("And God said, Let there be light: and there was light.")
-        //        : "\n\nTEXT SHOULD MATCH\n";
-
-        return 0;
-    }
-
 
 //    /** Low level tests... */
 //    static int
