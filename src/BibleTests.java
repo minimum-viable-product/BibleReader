@@ -4,32 +4,6 @@ class BibleTests {
         Test.run(BibleTests.class, args);
     }
 
-//    /** Low level tests... */
-//    static int
-//    test_openReader_throwsFileNotFoundException() {
-//        // THIS TEST IS NOW HANDLED ELSEWHERE!
-//        //TODO: Register in user-level test list
-//
-//        /* Arrange */
-//        Bible bible = new Bible();
-//        Reader result;
-//
-//        /* Act */
-//        result = bible.openReader("\0");
-//
-//        return 0;
-//    }
-
-    //static int
-    //test_BibleFillBuffer() {
-    //    //todo: register test in low-level test list
-    //    Bible bible = new Bible();
-    //    Reader reader = bible.openReader("../data/blank.txt");
-    //    assert Reader.class.isInstance(
-    //            bible.fillBuffer(0L, reader))
-    //            : "SHOULD RETURN A BUFFERED READER INSTANCE";
-    //    return 0;
-    //}
 
     public static int
     test_openBook_returnsGenesisFirstVerse_givenNoArguments() {
@@ -89,5 +63,32 @@ class BibleTests {
     //            .openBook("genesis", 3)
     //            .equals("And God said, Let there be light: and there was light.")
     //            : "\n\nTEXT SHOULD MATCH\n";
+    //}
+
+//    /** Low level tests... */
+//    static int
+//    test_openReader_throwsFileNotFoundException() {
+//        // THIS TEST IS NOW HANDLED ELSEWHERE!
+//        //TODO: Register in user-level test list
+//
+//        /* Arrange */
+//        Bible bible = new Bible();
+//        Reader result;
+//
+//        /* Act */
+//        result = bible.openReader("\0");
+//
+//        return 0;
+//    }
+
+    //static int
+    //test_BibleFillBuffer() {
+    //    //todo: register test in low-level test list
+    //    Bible bible = new Bible();
+    //    Reader reader = bible.openReader("../data/blank.txt");
+    //    assert Reader.class.isInstance(
+    //            bible.fillBuffer(0L, reader))
+    //            : "SHOULD RETURN A BUFFERED READER INSTANCE";
+    //    return 0;
     //}
 }
