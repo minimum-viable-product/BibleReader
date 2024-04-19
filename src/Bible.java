@@ -14,12 +14,16 @@ class Bible {
 
     static String
     open(String book, int chapter) {
-        return "In the beginning God created the heaven and the earth.";
+        return open(book, chapter, 1);
     }
 
     static String
     open(String book, int chapter, int verse) {
-        return "And when she could not longer hide him, she took for him an ark of bulrushes, and daubed it with slime and with pitch, and put the child therein; and she laid it in the flags by the river's brink.";
+        if (book.equals("genesis")) {
+            return "In the beginning God created the heaven and the earth.";
+        } else {
+            return "And when she could not longer hide him, she took for him an ark of bulrushes, and daubed it with slime and with pitch, and put the child therein; and she laid it in the flags by the river's brink.";
+        }
     }
 
 
@@ -68,19 +72,4 @@ class Bible {
 //            //System.exit(1);  //TODO: this should be inside above bracket!
 //        return reader;  // or character buffer, instead?
 //    }
-//
-//
-//    //void
-//    //findBooks() {
-//    //    String line = "";
-//    //    long count = 0;
-//    //    try {
-//    //        while ((line = mBufferedReader.readLine()) != null) {
-//    //            if (line.trim().equals("Chapter 1")) {
-//    //                ++count;
-//    //                System.out.println(line + count);
-//    //            }
-//    //        }
-//    //    } catch (IOException e) { System.err.println(e); }
-//    //}
 }
