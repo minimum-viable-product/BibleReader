@@ -1,3 +1,6 @@
+/**
+ * Core bible module
+ */
 class Bible {
 //    char[]
 //    mCharBuffer = new char[5504282];

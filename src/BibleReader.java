@@ -1,3 +1,6 @@
+/**
+ * Main entry point
+ */
 class BibleReader {
     public static void
     main(String[] args) {

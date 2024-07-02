@@ -1,9 +1,13 @@
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-//TODO: Side-effecting / `void` methods okay? Or should return 0/1 instead?
-//TODO: Test-drive the above feature into existence?
 
+/**
+ * Run a test class
+ *
+ * TODO: Side-effecting / `void` methods okay? Or should return 0/1 instead?
+ * TODO: Test-drive the above feature into existence?
+ */
 class Test {
 
     /**

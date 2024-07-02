@@ -1,6 +1,7 @@
 class BibleTests {
     public static void
     main(String[] args) {
+		/* Run all tests in class */
         Test.run(BibleTests.class, args);
     }
 
