@@ -1,3 +1,8 @@
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+
+
 /**
  * Core bible module
  */
@@ -29,7 +34,19 @@ class Bible {
         }
     }
 
+	static BufferedReader
+	getReader(String filepath) {
+		BufferedReader bufferedReader = null;
+		try {
+			bufferedReader = new BufferedReader(
+					new FileReader("../data/kjv-.txt")
+			);
+		} catch (FileNotFoundException e) {
+		}
 
+		return bufferedReader;
+	}
+}
 //-------------------------
 //        long location = 0L;
 //        if (chapter == 1) location = 0x12839L;
@@ -75,4 +92,4 @@ class Bible {
 //            //System.exit(1);  //TODO: this should be inside above bracket!
 //        return reader;  // or character buffer, instead?
 //    }
-}
+

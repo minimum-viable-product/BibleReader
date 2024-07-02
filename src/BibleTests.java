@@ -63,18 +63,30 @@ class BibleTests {
     }
 
 	public static int
-	test___() {
+	test_getReader_returnsBufferedReader_givenTextFile() {
 		/* Arrange */
+		java.io.BufferedReader result;
 
 		/* Act */
+		result = Bible.getReader("../data/kjv-.txt");
 
 		/* Assert */
-
+		TestRunner.assertThat(result != null, "\n\nRESULT SHOULD NOT BE NULL\n");
 
 		return 0;
 	}
 
+	public static int
+	test_getReader_handlesException_givenBogusFilePath() {
+		/* Arrange */
 
+		/* Act */
+		Bible.getReader("");
+
+		/* Assert */
+
+		return 0;
+	}
 
 
 
