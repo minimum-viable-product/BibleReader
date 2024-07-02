@@ -3,15 +3,14 @@ import java.lang.reflect.Method;
 
 
 /**
- * Run a test class
+ * Run test classes
  *
  * TODO: Side-effecting / `void` methods okay? Or should return 0/1 instead?
  * TODO: Test-drive the above feature into existence?
  */
-class ClassTest {
-
+class Test {
     /**
-     *  // TODO: Build up a list of methods and call them randomly?
+     * Build up a list of methods (and call them randomly?)
      */
     static void
     run(Class cls, String[] args) {

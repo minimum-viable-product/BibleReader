@@ -2,7 +2,7 @@ class BibleTests {
     public static void
     main(String[] args) {
 		/* Run all tests in class */
-        ClassTest.run(BibleTests.class, args);
+        Test.run(BibleTests.class, args);
     }
 
 

@@ -2,7 +2,7 @@ class ExitTests {
 
     public static void
     main(String[] args) {
-        ClassTest.runNested(ExitTests.class, args);
+        Test.runNested(ExitTests.class, args);
     }
 
 
