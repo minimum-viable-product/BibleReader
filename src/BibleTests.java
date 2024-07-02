@@ -62,6 +62,29 @@ class BibleTests {
         return 0;
     }
 
+	public static int
+	test___() {
+		/* Arrange */
+
+		/* Act */
+
+		/* Assert */
+
+
+		return 0;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
     //public static int
     //test_openBook_() {
     //    assert new Bible()
