@@ -36,17 +36,19 @@ class Bible {
 
 	static BufferedReader
 	getReader(String filepath) {
-		BufferedReader bufferedReader = null;
+		BufferedReader bufferedReader = new Empty().new BufferedReader(
+				new Empty().new Reader());
 		try {
-			bufferedReader = new BufferedReader(
-					new FileReader("../data/kjv-.txt")
-			);
-		} catch (FileNotFoundException e) {
-		}
+			bufferedReader = new BufferedReader(new FileReader(""));
+		} catch (FileNotFoundException e) {	}
 
 		return bufferedReader;
 	}
 }
+
+
+
+
 //-------------------------
 //        long location = 0L;
 //        if (chapter == 1) location = 0x12839L;

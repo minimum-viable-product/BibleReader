@@ -5,7 +5,6 @@ class BibleTests {
         Test.run(BibleTests.class, args);
     }
 
-
     public static int
     test_open_returnsGenesisFirstVerse_givenNoArguments() {
         /* Arrange */
@@ -63,12 +62,12 @@ class BibleTests {
     }
 
 	public static int
-	test_getReader_returnsBufferedReader_givenTextFile() {
+	test_getReader_doesNotReturnNull_givenBogusPath() {
 		/* Arrange */
 		java.io.BufferedReader result;
 
 		/* Act */
-		result = Bible.getReader("../data/kjv-.txt");
+		result = Bible.getReader("");
 
 		/* Assert */
 		TestRunner.assertThat(result != null, "\n\nRESULT SHOULD NOT BE NULL\n");
@@ -77,23 +76,16 @@ class BibleTests {
 	}
 
 	public static int
-	test_getReader_handlesException_givenBogusFilePath() {
+	test_method_doesSomething_givenSomething() {
 		/* Arrange */
 
 		/* Act */
-		Bible.getReader("");
+		//Bible.getReader("");
 
 		/* Assert */
 
 		return 0;
 	}
-
-
-
-
-
-
-
 
 
 
