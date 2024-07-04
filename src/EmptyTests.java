@@ -6,15 +6,13 @@ class EmptyTests {
     }
 
 	public static int
-	test_() {
+	test_newBufferedReader_returnsEmptyInstance_givenEmptyReader() {
 		/* Arrange */
 		java.io.BufferedReader bufferedReader;
 		java.io.Reader reader = new Empty().new Reader();
 
 		/* Act */
-		bufferedReader = new Empty().new BufferedReader(reader); //.readLine();
-
-		/* Assert */
+		bufferedReader = new Empty().new BufferedReader(reader);
 
 		return 0;
 	}
@@ -26,8 +24,6 @@ class EmptyTests {
 
 		/* Act */
 		reader = new Empty().new Reader();
-
-		/* Assert */
 
 		return 0;
 	}
