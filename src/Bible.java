@@ -36,8 +36,7 @@ class Bible {
 
 	static BufferedReader
 	getReader(String filepath) {
-		BufferedReader bufferedReader = new Empty().new BufferedReader(
-				new Empty().new Reader());
+		BufferedReader bufferedReader = Empty.BufferedReader();
 		try {
 			bufferedReader = new BufferedReader(new FileReader(""));
 		} catch (FileNotFoundException e) {	}

@@ -27,4 +27,26 @@ class EmptyTests {
 
 		return 0;
 	}
+
+	public static int
+	test_emptyReader_returnsReader_givenNoArgs() {
+		/* Arrange */
+		java.io.Reader reader;
+
+		/* Act */
+		reader = Empty.Reader();
+
+		return 0;
+	}
+
+	public static int
+	test_emptyBufferedReader_returnsBufferedReader_givenNoArgs() {
+		/* Arrange */
+		java.io.BufferedReader reader;
+
+		/* Act */
+		reader = Empty.BufferedReader();
+
+		return 0;
+	}
 }
