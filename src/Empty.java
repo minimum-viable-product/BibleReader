@@ -17,5 +17,7 @@ class Empty {
 	Reader() { return new Empty().new Reader(); }
 
 	static BufferedReader
-	BufferedReader() { return new Empty().new BufferedReader(Reader()); }
+	BufferedReader() {
+        return new Empty().new BufferedReader(new java.io.StringReader(""));
+    }
 }

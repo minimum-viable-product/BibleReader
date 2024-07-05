@@ -38,8 +38,8 @@ class Bible {
 	getReader(String filepath) {
 		BufferedReader bufferedReader = Empty.BufferedReader();
 		try {
-			bufferedReader = new BufferedReader(new FileReader(""));
-		} catch (FileNotFoundException e) {	}
+			bufferedReader = new BufferedReader(new FileReader(filepath));
+		} catch (FileNotFoundException e) { }  // TODO ?
 
 		return bufferedReader;
 	}

@@ -75,17 +75,6 @@ class BibleTests {
 		return 0;
 	}
 
-	public static int
-	test_method_doesSomething_givenSomething() {
-		/* Arrange */
-
-		/* Act */
-		//Bible.getReader("");
-
-		/* Assert */
-
-		return 0;
-	}
 
 
 

@@ -49,4 +49,30 @@ class EmptyTests {
 
 		return 0;
 	}
+
+	public static int
+	test_lines_inEmptyImplementation_onEmptyBufferedReader() {
+		/* Arrange */
+		java.util.stream.Stream stream;
+
+		/* Act */
+		stream = Empty.BufferedReader().lines();
+
+		return 0;
+	}
+
+	public static int
+	test_readLine_inEmptyImplementation_onEmptyBufferedReader() {
+		/* Arrange */
+		String string;
+
+		/* Act */
+		try {
+            string = Empty.BufferedReader().readLine();
+        } catch (java.io.IOException e) {
+            System.err.println("SHOULD NOT CAUSE EXCEPTION");
+        }
+
+		return 0;
+	}
 }
