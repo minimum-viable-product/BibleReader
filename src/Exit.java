@@ -18,11 +18,11 @@ class Exit {
         System.exit(1);
     }
 
-	/**
-	 * Displays error and exits
-	 *
-	 * TODO: Disable and test textual output back into existance!
-	 */
+    /**
+     * Displays error and exits
+     *
+     * TODO: Disable and test textual output back into existance!
+     */
     static void
     displayError(Exception exception) {
         System.err.println("\n"+ exception.getStackTrace()[0] +

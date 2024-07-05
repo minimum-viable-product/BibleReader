@@ -1,7 +1,7 @@
 class BibleTests {
     public static void
     main(String[] args) {
-		/* Run all tests in class */
+        /* Run all tests in class */
         Test.run(BibleTests.class, args);
     }
 
@@ -61,19 +61,19 @@ class BibleTests {
         return 0;
     }
 
-	public static int
-	test_getReader_doesNotReturnNull_givenBogusPath() {
-		/* Arrange */
-		java.io.BufferedReader result;
+    public static int
+    test_getReader_doesNotReturnNull_givenBogusPath() {
+        /* Arrange */
+        java.io.BufferedReader result;
 
-		/* Act */
-		result = Bible.getReader("");
+        /* Act */
+        result = Bible.getReader("");
 
-		/* Assert */
-		TestRunner.assertThat(result != null, "\n\nRESULT SHOULD NOT BE NULL\n");
+        /* Assert */
+        TestRunner.assertThat(result != null, "\n\nRESULT SHOULD NOT BE NULL\n");
 
-		return 0;
-	}
+        return 0;
+    }
 
 
 

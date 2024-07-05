@@ -34,15 +34,15 @@ class Bible {
         }
     }
 
-	static BufferedReader
-	getReader(String filepath) {
-		BufferedReader bufferedReader = Empty.BufferedReader();
-		try {
-			bufferedReader = new BufferedReader(new FileReader(filepath));
-		} catch (FileNotFoundException e) { }  // TODO ?
+    static BufferedReader
+    getReader(String filepath) {
+        BufferedReader bufferedReader = Empty.BufferedReader();
+        try {
+            bufferedReader = new BufferedReader(new FileReader(filepath));
+        } catch (FileNotFoundException e) { }  // TODO ?
 
-		return bufferedReader;
-	}
+        return bufferedReader;
+    }
 }
 
 
