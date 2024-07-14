@@ -63,11 +63,6 @@ class Bible {
 
         return -1;  // book not found
     }
-
-    //static boolean
-    //startsWith(String bookname) {
-    //    return false;
-    //}
 }
 
 
