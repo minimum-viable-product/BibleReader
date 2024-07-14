@@ -75,8 +75,64 @@ class BibleTests {
         return 0;
     }
 
+    public static int
+    test_getBeginning_returnsLineNumber_givenBookGenesis() {
+        /* Arrange */
+        String book = "genesis";
+        int lineNumber;
 
+        /* Act */
+        lineNumber = Bible.getBeginning(book);
 
+        /* Assert */
+        TestRunner.assertThat(lineNumber == 2, "\n\nLINE NUMBER SHOULD MATCH\n");
+
+        return 0;
+    }
+
+    public static int
+    test_getBeginning_returnsLineNumber_givenBookExodus() {
+        /* Arrange */
+        String book = "exodus";
+        int lineNumber;
+
+        /* Act */
+        lineNumber = Bible.getBeginning(book);
+
+        /* Assert */
+        TestRunner.assertThat(lineNumber == 1535, "\n\nLINE NUMBER SHOULD MATCH\n");
+
+        return 0;
+    }
+
+    public static int
+    test_getBeginning_returnsLineNumber_givenBookRevelation() {
+        /* Arrange */
+        String book = "revelation";
+        int lineNumber;
+
+        /* Act */
+        lineNumber = Bible.getBeginning(book);
+
+        /* Assert */
+        TestRunner.assertThat(lineNumber == 30700, "\n\nLINE NUMBER SHOULD MATCH\n");
+
+        return 0;
+    }
+
+//    public static int
+//    test_() {
+//        /* Arrange */
+//        String book = "";
+//
+//        /* Act */
+//        Bible.startsWith(book);
+//
+//        /* Assert */
+//
+//
+//        return 0;
+//    }
 
     //public static int
     //test_openBook_() {

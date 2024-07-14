@@ -32,6 +32,8 @@ class Bible {
         } else {
             return "And when she could not longer hide him, she took for him an ark of bulrushes, and daubed it with slime and with pitch, and put the child therein; and she laid it in the flags by the river's brink.";
         }
+
+
     }
 
     static BufferedReader
@@ -39,10 +41,33 @@ class Bible {
         BufferedReader bufferedReader = Empty.BufferedReader();
         try {
             bufferedReader = new BufferedReader(new FileReader(filepath));
-        } catch (FileNotFoundException e) { }  // TODO ?
+        } catch (FileNotFoundException e) { }  // Swallowed; return empty instead
 
         return bufferedReader;
     }
+
+    static int
+    getBeginning(String book) {
+        BufferedReader reader = getReader("../data/kjv-.txt");
+
+        int line_count = 0;  // sentinel value
+        String line;
+        try {
+            while ((line = reader.readLine()) != null) {
+                ++line_count;
+                if (line.toLowerCase().startsWith(book)) {
+                    return line_count;
+                }
+            }
+        } catch (java.io.IOException e) { System.err.println("getBeginning: "+ e); }
+
+        return -1;  // book not found
+    }
+
+    //static boolean
+    //startsWith(String bookname) {
+    //    return false;
+    //}
 }
 
 
