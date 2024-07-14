@@ -4,7 +4,7 @@ import java.lang.reflect.Method;
 import java.util.Arrays;
 
 class TestRunner {
-	/** Replace assert keyword */
+    /** Replace assert keyword */
     public static void
     assertThat(boolean assertion, String detailMessage) {
         AssertionError assertionError = new AssertionError(detailMessage);
@@ -16,8 +16,8 @@ class TestRunner {
 
 
     /**
-	 * Run tests
-	 */
+     * Run tests
+     */
     public static void
     main(String[] args) {
         if (args.length == 0) {
