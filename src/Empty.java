@@ -6,10 +6,12 @@ class Empty {
 
     public class
     Reader extends java.io.Reader {
-        @Override public void
+        //@Override
+        public void
         close() { }
 
-        @Override public int
+        //@Override
+        public int
         read(char[] ca, int i, int j) { return 0; }
     }
 
