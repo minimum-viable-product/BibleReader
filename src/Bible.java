@@ -34,22 +34,23 @@ class Bible {
         }
 
 
+        //displayContent(...);
+                //int bookBeginning = getBookBeginning(reader, book);
+                //int chapterBeginning = getChapterBeginning(reader, bookBeginning);
+                //int bookVerse = getVerseFrom(reader, chapterBeginning);
     }
 
     static BufferedReader
     getReader(String filepath) {
-        BufferedReader bufferedReader = Empty.BufferedReader();
         try {
-            bufferedReader = new BufferedReader(new FileReader(filepath));
-        } catch (FileNotFoundException e) { }  // Swallowed; return empty instead
-
-        return bufferedReader;
+            return new BufferedReader(new FileReader(filepath));
+        } catch (FileNotFoundException e) {
+            return Empty.BufferedReader();
+        }
     }
 
     static int
-    getBeginning(String book) {
-        BufferedReader reader = getReader("../data/kjv-.txt");
-
+    getBookBeginning(BufferedReader reader, String book) {
         int line_count = 0;  // sentinel value
         String line;
         try {
@@ -62,5 +63,25 @@ class Bible {
         } catch (java.io.IOException e) { System.err.println("getBeginning: "+ e); }
 
         return -1;  // book not found
+    }
+
+    static int
+    getChapterBeginning(BufferedReader reader,
+                        int bookBeginning,
+                        int chapterNumber)
+    {
+//        int line_count = 0;  // sentinel value
+//        String line;
+//        try {
+//            while ((line = reader.readLine()) != null) {
+//                ++line_count;
+//                if (line.toLowerCase().startsWith(book)) {
+//                    return line_count;
+//                }
+//            }
+//        } catch (java.io.IOException e) { System.err.println("getBeginning: "+ e); }
+//
+//        return -1;  // book not found
+        return 2;
     }
 }

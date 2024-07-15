@@ -1,3 +1,5 @@
+import java.io.BufferedReader;
+
 class BibleTests {
     public static void
     main(String[] args) {
@@ -37,9 +39,11 @@ class BibleTests {
     test_open_returnsGenesisFirstVerse_givenBookAndVerse() {
         /* Arrange */
         String result;
-        /* Act */
+
+        /* Act (interface) */
         result = Bible.open("genesis", 1);
-        /* Assert */
+
+        /* Assert (runtime implementation) */
         TestRunner.assertThat(
             result.equals("In the beginning God created the heaven and the earth."),
             "\n\nTEXT SHOULD MATCH\n"
@@ -76,13 +80,14 @@ class BibleTests {
     }
 
     public static int
-    test_getBeginning_returnsLineNumber_givenBookGenesis() {
+    test_getBookBeginning_returnsLineNumber_givenBookGenesis() {
         /* Arrange */
         String book = "genesis";
-        int lineNumber;
+        BufferedReader reader = Bible.getReader("../data/kjv-.txt");
+        int lineNumber = 0;
 
         /* Act */
-        lineNumber = Bible.getBeginning(book);
+        lineNumber = Bible.getBookBeginning(reader, book);
 
         /* Assert */
         TestRunner.assertThat(lineNumber == 2, "\n\nLINE NUMBER SHOULD MATCH\n");
@@ -94,10 +99,11 @@ class BibleTests {
     test_getBeginning_returnsLineNumber_givenBookExodus() {
         /* Arrange */
         String book = "exodus";
+        BufferedReader reader = Bible.getReader("../data/kjv-.txt");
         int lineNumber;
 
         /* Act */
-        lineNumber = Bible.getBeginning(book);
+        lineNumber = Bible.getBookBeginning(reader, book);
 
         /* Assert */
         TestRunner.assertThat(lineNumber == 1535, "\n\nLINE NUMBER SHOULD MATCH\n");
@@ -109,13 +115,56 @@ class BibleTests {
     test_getBeginning_returnsLineNumber_givenBookRevelation() {
         /* Arrange */
         String book = "revelation";
+        BufferedReader reader = Bible.getReader("../data/kjv-.txt");
         int lineNumber;
 
         /* Act */
-        lineNumber = Bible.getBeginning(book);
+        lineNumber = Bible.getBookBeginning(reader, book);
 
         /* Assert */
         TestRunner.assertThat(lineNumber == 30700, "\n\nLINE NUMBER SHOULD MATCH\n");
+
+        return 0;
+    }
+
+    public static int
+    test_getChapterLineNumber_returnsLineNumber_givenGenesisOne() {
+        /* Arrange */
+        int chapterNumber = 1;
+        int chapterLineNumber;
+        BufferedReader reader = Bible.getReader("../data/kjv-.txt");
+        int bookBeginning = Bible.getBookBeginning(reader, "genesis");
+
+        /* Act */
+        chapterLineNumber = Bible.getChapterBeginning(
+                reader,
+                bookBeginning,
+                chapterNumber);
+
+        /* Assert */
+        TestRunner.assertThat(chapterLineNumber == 2,
+                "\n\nLINE NUMBER SHOULD MATCH\n");
+
+        return 0;
+    }
+
+        public static int
+    test_getChapterBeginning_TOTALLY_BOGUS_NAME() {
+//        /* Arrange */
+//        int chapterNumber = 2;
+//        int chapterLineNumber;
+//        BufferedReader reader = Bible.getReader("../data/kjv-.txt");
+//        int bookBeginning = Bible.getBookBeginning(reader, "exodus");
+//
+//        /* Act */
+//        chapterLineNumber = Bible.getChapterBeginning(
+//                reader,
+//                bookBeginning,
+//                chapterNumber);
+//
+//        /* Assert */
+//        TestRunner.assertThat(chapterLineNumber == 1557,
+//                "\n\nLINE NUMBER SHOULD MATCH\n");
 
         return 0;
     }
