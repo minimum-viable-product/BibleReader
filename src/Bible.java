@@ -1,4 +1,5 @@
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 
@@ -27,17 +28,20 @@ class Bible {
 
     static String
     open(String book, int chapter, int verse) {
-        if (book.equals("genesis")) {
-            return "In the beginning God created the heaven and the earth.";
-        } else {
-            return "And when she could not longer hide him, she took for him an ark of bulrushes, and daubed it with slime and with pitch, and put the child therein; and she laid it in the flags by the river's brink.";
-        }
+        BufferedReader bufferedReader = getReader("../data/kjv-no-bom.txt");
 
+        try {
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                if (line.toLowerCase().startsWith(
+                        book +" "+ chapter +":"+ verse +"\t")) {
+                    //System.out.println(line.split("\t")[1].replaceAll("’", "'"));  // DEBUG
+                    return line.split("\t")[1].replaceAll("’", "'");
+                }
+            }
+        } catch (IOException e) { System.err.println(e); }
 
-        //displayContent(...);
-                //int bookBeginning = getBookBeginning(reader, book);
-                //int chapterBeginning = getChapterBeginning(reader, bookBeginning);
-                //int bookVerse = getVerseFrom(reader, chapterBeginning);
+        return "";
     }
 
     static BufferedReader
@@ -47,41 +51,5 @@ class Bible {
         } catch (FileNotFoundException e) {
             return Empty.BufferedReader();
         }
-    }
-
-    static int
-    getBookBeginning(BufferedReader reader, String book) {
-        int line_count = 0;  // sentinel value
-        String line;
-        try {
-            while ((line = reader.readLine()) != null) {
-                ++line_count;
-                if (line.toLowerCase().startsWith(book)) {
-                    return line_count;
-                }
-            }
-        } catch (java.io.IOException e) { System.err.println("getBeginning: "+ e); }
-
-        return -1;  // book not found
-    }
-
-    static int
-    getChapterBeginning(BufferedReader reader,
-                        int bookBeginning,
-                        int chapterNumber)
-    {
-//        int line_count = 0;  // sentinel value
-//        String line;
-//        try {
-//            while ((line = reader.readLine()) != null) {
-//                ++line_count;
-//                if (line.toLowerCase().startsWith(book)) {
-//                    return line_count;
-//                }
-//            }
-//        } catch (java.io.IOException e) { System.err.println("getBeginning: "+ e); }
-//
-//        return -1;  // book not found
-        return 2;
     }
 }
