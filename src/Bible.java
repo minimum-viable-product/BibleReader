@@ -8,9 +8,6 @@ import java.io.FileReader;
  * Core bible module
  */
 class Bible {
-//    char[]
-//    mCharBuffer = new char[5504282];
-//
     static String
     open() {
         return open("genesis");
@@ -35,8 +32,7 @@ class Bible {
             while ((line = bufferedReader.readLine()) != null) {
                 if (line.toLowerCase().startsWith(
                         book +" "+ chapter +":"+ verse +"\t")) {
-                    //System.out.println(line.split("\t")[1].replaceAll("’", "'"));  // DEBUG
-                    return line.split("\t")[1].replaceAll("’", "'");
+                    return line.split("\t")[1].replaceAll("’", "'");  // UTF-8!
                 }
             }
         } catch (IOException e) { System.err.println(e); }
