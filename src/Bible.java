@@ -1,7 +1,9 @@
 import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.io.IOException;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.net.URL;
 
 
 /**
@@ -25,7 +27,7 @@ class Bible {
 
     static String
     open(String book, int chapter, int verse) {
-        BufferedReader bufferedReader = getReader("../data/kjv-no-bom.txt");
+        BufferedReader bufferedReader = getReader("/data/kjv-no-bom.txt");
 
         try {
             String line;
@@ -43,8 +45,10 @@ class Bible {
     static BufferedReader
     getReader(String filepath) {
         try {
-            return new BufferedReader(new FileReader(filepath));
-        } catch (FileNotFoundException e) {
+            return new BufferedReader(new InputStreamReader(
+                    Bible.class.getResource(filepath).openStream()
+            ));
+        } catch (IOException e) {
             return Empty.BufferedReader();
         }
     }
