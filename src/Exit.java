@@ -30,4 +30,10 @@ class Exit {
         );
         System.exit(1);
     }
+
+    static void
+    displayError(String errorMessage) {
+        System.err.println("\n\n"+ errorMessage +"\n");
+        System.exit(1);
+    }
 }
