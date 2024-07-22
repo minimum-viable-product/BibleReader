@@ -1,8 +1,8 @@
-class MainTests {
+class BibleReaderTests {
     public static void
     main(String[] args) {
         /* Run all tests in class */
-        Test.run(MainTests.class, args);
+        Test.run(BibleReaderTests.class, args);
     }
 
     public static int
@@ -11,7 +11,7 @@ class MainTests {
         String[] arguments = { "genesis", "1", "1" };
 
         /* Act */
-        boolean result = Main.checkCommandLine(arguments);
+        boolean result = BibleReader.checkCommandLine(arguments);
 
         /* Assert */
         TestRunner.assertThat(result == true, "\n\nSHOULD RETURN TRUE\n");

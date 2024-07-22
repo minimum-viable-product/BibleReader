@@ -1,7 +1,7 @@
 /**
- * Main entry point
+ * Main entry-point
  */
-class Main {
+class BibleReader {
     public static void
     main(String[] args) {  /* Entry-point (only) NOT test-driven! */
         checkCommandLine(args);
@@ -18,7 +18,7 @@ class Main {
     static boolean
     checkCommandLine(String[] cmdLineArgs) {
         if (cmdLineArgs.length != 3) {
-            Exit.displayError("EXPECTED: java Main <book> <chapter> <verse>");
+            Exit.displayError("EXPECTED: BibleReader <book> <chapter> <verse>");
         }
 
         return true;
