@@ -3,19 +3,15 @@
  */
 class Main {
     public static void
-    main(String[] args) {  // Entry-point NOT test-driven!
+    main(String[] args) {  /* Entry-point (only) NOT test-driven! */
         checkCommandLine(args);
 
-        String book = args[0];
-        String chapter = args[1];
-        String verse = args[2];
-
         System.out.println(
-                Bible.open(
-                        book,
-                        Integer.parseInt(chapter),
-                        Integer.parseInt(verse)
-                )
+                Bible.open(new BibleLocation(
+                        args[0],  /* book */
+                        args[1],  /* chapter */
+                        args[2]   /* verse */
+                ))
         );
     }
 

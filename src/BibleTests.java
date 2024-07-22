@@ -8,68 +8,6 @@ class BibleTests {
     }
 
     public static int
-    test_open_returnsGenesisFirstVerse_givenNoArguments() {
-        /* Arrange */
-        String result;
-        /* Act */
-        result = Bible.open();
-        /* Assert */
-        TestRunner.assertThat(
-            result.equals("In the beginning God created the heaven and the earth."),
-            "\n\nTEXT SHOULD MATCH\n"
-        );
-        return 0;
-    }
-
-    public static int
-    test_open_returnsGenesisFirstVerse_givenOnlyBookArgument() {
-        /* Arrange */
-        String result;
-
-        /* Act */
-        result = Bible.open("genesis");
-
-        /* Assert */
-        TestRunner.assertThat(
-            result.equals("In the beginning God created the heaven and the earth."),
-            "\n\nTEXT SHOULD MATCH\n"
-        );
-        return 0;
-    }
-
-    public static int
-    test_open_returnsGenesisFirstVerse_givenBookAndVerse() {
-        /* Arrange */
-        String result;
-
-        /* Act (interface) */
-        result = Bible.open("genesis", 1);
-
-        /* Assert (runtime implementation) */
-        TestRunner.assertThat(
-            result.equals("In the beginning God created the heaven and the earth."),
-            "\n\nTEXT SHOULD MATCH\n"
-        );
-        return 0;
-    }
-
-    public static int
-    test_open_returnsExodus2Verse3_givenBookChapterVerse() {
-        /* Arrange */
-        String result;
-
-        /* Act */
-        result = Bible.open("exodus", 2, 3);
-
-        /* Assert */
-        TestRunner.assertThat(
-            result.equals("And when she could not longer hide him, she took for him an ark of bulrushes, and daubed it with slime and with pitch, and put the child therein; and she laid [it] in the flags by the river's brink."),
-            "\n\nTEXT SHOULD MATCH\n"
-        );
-        return 0;
-    }
-
-    public static int
     test_getReader_doesNotReturnNull_givenBogusPath() {
         /* Arrange */
         java.io.BufferedReader result;
@@ -143,6 +81,25 @@ class BibleTests {
         TestRunner.assertThat(
                 result.verse.equals("1"),
                 "\n\nVERSE SHOULD MATCH\n"
+        );
+
+        return 0;
+    }
+
+    public static int
+    test_openNewBibleLocation_returnsCorrectVerse_givenExodusTwoTwo() {
+        /* Arrange */
+        BibleLocation bibleLocation;
+        String verse;
+
+        /* Act */
+        bibleLocation = new BibleLocation("exodus", "2", "2");
+        verse = Bible.open(bibleLocation);
+
+        /* Assert */
+        TestRunner.assertThat(verse.equals(
+                "And the woman conceived, and bare a son: and when she saw him that he [was a] goodly [child], she hid him three months."),
+                "\n\nTEXT SHOULD MATCH\n"
         );
 
         return 0;

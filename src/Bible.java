@@ -11,35 +11,17 @@ import java.net.URL;
  */
 class Bible {
     static String
-    open() {
-        return open("genesis");
-    }
-
-    static String
-    open(String book) {
-        return open(book, 1);
-    }
-
-    static String
-    open(String book, int chapter) {
-        return open(book, chapter, 1);
-    }
-
-    static String
-    open(BibleLocation b) {
-        //return "In the beginning God created the heaven and the earth.";
-        return open(b.book);
-    }
-
-    static String
-    open(String book, int chapter, int verse) {
+    open(BibleLocation bibleLocation) {
         BufferedReader bufferedReader = getReader("/data/kjv-no-bom.txt");
 
         try {
             String line;
             while ((line = bufferedReader.readLine()) != null) {
                 if (line.toLowerCase().startsWith(
-                        book +" "+ chapter +":"+ verse +"\t")) {
+                        bibleLocation.book +" "+
+                        bibleLocation.chapter +":"+
+                        bibleLocation.verse +"\t"))
+                {
                     return line.split("\t")[1].replaceAll("’", "'");  // UTF-8!
                 }
             }
@@ -65,4 +47,11 @@ class BibleLocation {
     String book    = "genesis";
     String chapter = "1";
     String verse   = "1";
+
+    BibleLocation() { }
+    BibleLocation(String book, String chapter, String verse) {
+        this.book = book;
+        this.chapter = chapter;
+        this.verse = verse;
+    }
 }
