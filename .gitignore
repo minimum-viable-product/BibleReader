@@ -1,6 +1,7 @@
 *.class
 
 data/**
+out/**
 spikes/**
 swing/**
 
