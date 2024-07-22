@@ -82,4 +82,69 @@ class BibleTests {
 
         return 0;
     }
+
+    public static int
+    test_open_returnsVerse_givenObject() {
+        /* Arrange */
+        BibleLocation bibleLocation = new BibleLocation();
+
+        /* Act */
+        String result = Bible.open(bibleLocation);
+
+        /* Assert */
+        TestRunner.assertThat(result.equals(
+                "In the beginning God created the heaven and the earth."),
+                "\n\nTEXT SHOULD MATCH\n"
+        );
+
+        return 0;
+    }
+
+    public static int
+    test_newBibleLocation_returnsBookGenesis_givenNoArgConstructor() {
+        /* Arrange */
+
+        /* Act */
+        BibleLocation result = new BibleLocation();
+
+        /* Assert */
+        TestRunner.assertThat(
+                result.book.equals("genesis"),
+                "\n\nBOOK SHOULD MATCH\n"
+        );
+
+        return 0;
+    }
+
+    public static int
+    test_newBibleLocation_returnsChapterOne_givenNoArgConstructor() {
+        /* Arrange */
+
+        /* Act */
+        BibleLocation result = new BibleLocation();
+
+        /* Assert */
+        TestRunner.assertThat(
+                result.chapter.equals("1"),
+                "\n\nCHAPTER SHOULD MATCH\n"
+        );
+
+        return 0;
+    }
+
+    public static int
+    test_newBibleLocation_returnsVerseOne_givenNoArgConstructor() {
+        /* Arrange */
+
+        /* Act */
+        BibleLocation result = new BibleLocation();
+
+        /* Assert */
+        TestRunner.assertThat(
+                result.verse.equals("1"),
+                "\n\nVERSE SHOULD MATCH\n"
+        );
+
+        return 0;
+    }
 }

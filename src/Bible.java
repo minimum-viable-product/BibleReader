@@ -26,6 +26,12 @@ class Bible {
     }
 
     static String
+    open(BibleLocation b) {
+        //return "In the beginning God created the heaven and the earth.";
+        return open(b.book);
+    }
+
+    static String
     open(String book, int chapter, int verse) {
         BufferedReader bufferedReader = getReader("/data/kjv-no-bom.txt");
 
@@ -52,4 +58,11 @@ class Bible {
             return Empty.BufferedReader();
         }
     }
+}
+
+
+class BibleLocation {
+    String book    = "genesis";
+    String chapter = "1";
+    String verse   = "1";
 }
