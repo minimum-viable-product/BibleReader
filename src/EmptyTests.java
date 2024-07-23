@@ -51,18 +51,21 @@ class EmptyTests {
     }
 
     public static int
-    test_lines_inEmptyImplementation_onEmptyBufferedReader() {
+    test_lines_returnsEmpty_givenEmptyBufferedReader() {
         /* Arrange */
         java.util.stream.Stream stream;
 
         /* Act */
         stream = Empty.BufferedReader().lines();
 
+        /* Assert */
+        //TODO!
+
         return 0;
     }
 
     public static int
-    test_readLine_inEmptyImplementation_onEmptyBufferedReader() {
+    test_readLine_returnsEmpty_givenEmptyBufferedReader() {
         /* Arrange */
         String string;
 
@@ -72,6 +75,9 @@ class EmptyTests {
         } catch (java.io.IOException e) {
             System.err.println("SHOULD NOT CAUSE EXCEPTION");
         }
+
+        /* Assert */
+        //TODO!
 
         return 0;
     }

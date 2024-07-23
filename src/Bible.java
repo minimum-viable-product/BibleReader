@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.net.URL;
+import java.util.Locale;
 
 
 /**
@@ -17,7 +18,7 @@ class Bible {
         try {
             String line;
             while ((line = bufferedReader.readLine()) != null) {
-                if (line.toLowerCase().startsWith(
+                if (line.toLowerCase(new Locale("","","")).startsWith(
                         bibleLocation.book +" "+
                         bibleLocation.chapter +":"+
                         bibleLocation.verse +"\t"))

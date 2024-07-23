@@ -1,7 +1,7 @@
 /**
  * Main entry-point
  */
-class BibleReader {
+class Main {
     public static void
     main(String[] args) {  /* Entry-point (only) NOT test-driven! */
         checkCommandLine(args);
