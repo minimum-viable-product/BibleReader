@@ -104,4 +104,20 @@ class BibleTests {
 
         return 0;
     }
+
+    public static int
+    test_() {
+        /* Arrange */
+
+        /* Act */
+        BibleLocation result = new BibleLocation("GeNeSiS", "2", "2");
+
+        /* Assert */
+        TestRunner.assertThat(
+                result.book.equals("genesis"),
+                "BOOK NAME SHOULD BE CONVERTED TO LOWERCASE"
+        );
+
+        return 0;
+    }
 }
