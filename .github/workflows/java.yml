@@ -42,6 +42,6 @@ jobs:
         javac -version
         cd out
         pwd
-        native-image -jar BibleReader.jar -H:IncludeResources=".*txt$"
+        native-image -jar BibleReader.jar -H:IncludeResources=".*txt$" -H:-CheckToolchain
 #    - name: Build with Ant
 #      run: ant -noinput -buildfile build.xml
