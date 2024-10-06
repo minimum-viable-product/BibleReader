@@ -10,7 +10,8 @@ on:
     branches: [ "master" ]
 
 jobs:
-  my_build:
+  build:
+
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v4
