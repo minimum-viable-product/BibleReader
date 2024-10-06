@@ -16,12 +16,12 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - name: Set up JDK 17
+    - name: Set up JDK 8
       uses: actions/setup-java@v4
       with:
-        java-version: '17'
-        distribution: 'graalvm'
-    - name: Build without Ant
+        java-version: '8'
+        distribution: 'temurin'
+    - name: Compile java files with JDK 8
       run: |
         javac -version
         pwd
@@ -29,5 +29,15 @@ jobs:
         cd out
         javac -source 1.4 -Xmaxerrs 1 -Xlint:-options ../src/*.java
         jar cvfe BibleReader.jar Main -C ../src .
+    - name: Set up JDK 17 (GraalVM)
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17'
+        distribution: 'graalvm'
+    - name: Create native binary
+      run: |
+        javac -version
+        pwd
+        native-image -jar BibleReader.jar -H:IncludeResources=".*txt$"
 #    - name: Build with Ant
 #      run: ant -noinput -buildfile build.xml
