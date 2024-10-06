@@ -21,7 +21,7 @@ jobs:
       with:
         java-version: '11'
         distribution: 'graalvm'
-     - name Build
+     - name: Build without Ant
        run: javac -version
 #    - name: Build with Ant
 #      run: ant -noinput -buildfile build.xml
