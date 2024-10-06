@@ -13,12 +13,12 @@ jobs:
   build:
     runs-on: ubuntu-20.04
     steps:
-    - uses: actions/checkout@v4
-    - name: Set up JDK 11 (GraalVM)
-      uses: actions/setup-java@v4
-      with:
-        java-version: '11'
-        distribution: 'graalvm'
+      - uses: actions/checkout@v4
+      - name: Set up JDK 11 (GraalVM)
+        uses: actions/setup-java@v4
+        with:
+          java-version: '11'
+          distribution: 'graalvm'
      - name: Build without Ant
        run: javac -version
 #    - name: Build with Ant
