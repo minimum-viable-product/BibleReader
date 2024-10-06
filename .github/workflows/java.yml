@@ -11,9 +11,12 @@ on:
 
 jobs:
   build:
-
-    runs-on: ubuntu-20.04
-
+    #runs-on: ubuntu-20.04
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ 'ubuntu-20.04', 'windows-2019' ]
+    name: Java (${{ matrix.os }}) sample
     steps:
     - uses: actions/checkout@v4
     - name: Set up JDK 8
