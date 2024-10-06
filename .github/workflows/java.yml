@@ -37,6 +37,7 @@ jobs:
     - name: Create native binary
       run: |
         javac -version
+        cd out
         pwd
         native-image -jar BibleReader.jar -H:IncludeResources=".*txt$"
 #    - name: Build with Ant
