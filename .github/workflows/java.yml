@@ -24,6 +24,10 @@ jobs:
     - name: Build without Ant
       run: |
         javac -version
-        where javac
+        pwd
+        mkdir out
+        cd out
+        javac -source 1.4 -Xmaxerrs 1 -Xlint:-options ../src/*.java
+        jar cvfe BibleReader.jar Main -C ../src .
 #    - name: Build with Ant
 #      run: ant -noinput -buildfile build.xml
