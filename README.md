@@ -29,3 +29,5 @@ _Create Native Binary (.EXE)_
 ```
 native-image -jar BibleReader.jar -H:IncludeResources=".*txt$"
 ```
+
+![build status](https://github.com/minimum-viable-product/BibleReader/actions/workflows/java.yml/badge.svg?event=push)
