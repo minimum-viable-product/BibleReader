@@ -50,6 +50,7 @@ class BibleLocation {
     String verse   = "1";
 
     BibleLocation() { }
+
     BibleLocation(String book, String chapter, String verse) {
         this.book = book.toLowerCase();
         this.chapter = chapter;
