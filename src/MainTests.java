@@ -172,4 +172,20 @@ class MainTests {
         return 0;
     }
 
+    public static int
+    test_pad_returnsStringWithTrailingSpace_givenString() {
+        /* Arrange */
+        String string = "My String";
+
+        /* Act */
+        string = Main.pad(string);
+
+        /* Assert */
+        TestRunner.assertThat(string.equals("My String       "),
+                              "\n\nSTRING SHOULD BE PADDED TO 16 CHARACTERS\n");
+
+        return 0;
+    }
+
+
 }

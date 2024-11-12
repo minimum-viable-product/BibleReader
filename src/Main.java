@@ -5,7 +5,7 @@ class Main {
     public static void
     main(String[] args) {
         checkCommandLine(args);
-        displayBookNames();
+        displayBookNamesInColumns();
 
         System.out.println(
                 Bible.open(new BibleLocation(
@@ -29,15 +29,49 @@ class Main {
     /**
      * Display list of books linearly.
      */
-    static int
+    static void
     displayBookNames() {
         String[] bookNames = getBookNames();
 
         for (int i=0; i < bookNames.length; ++i) {
             System.out.println(bookNames[i]);
         }
+    }
 
-        return 0;
+
+    /**
+     * Displays book names in 14 x 5 column format.
+     */
+    static void
+    displayBookNamesInColumns() {
+        String[] bookNames = getBookNames();
+
+        System.out.println();
+        for (int i=0; i < 14; ++i) {
+            System.out.print(pad(bookNames[i]));
+            System.out.print(pad(bookNames[i+14]));
+            System.out.print(pad(bookNames[i+28]));
+            System.out.print(pad(bookNames[i+42]));
+            if (i+56 < bookNames.length)
+                System.out.print(bookNames[i+56]);
+            System.out.println();
+        }
+    }
+
+
+    /**
+     * Pad string with enough trailing space to equal 16 total
+     * characters.
+     */
+    static String
+    pad(String string) {
+        int spacing = string.length();
+        while (spacing < 16) {
+            string = string.concat(" ");
+            spacing += 1;
+        }
+
+        return string;
     }
 
 
