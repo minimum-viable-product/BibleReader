@@ -35,7 +35,7 @@ jobs:
     - name: Set up JDK 17 (GraalVM)
       uses: actions/setup-java@v4
       with:
-        java-version: '17'
+        java-version: '17.0.12'
         distribution: 'graalvm'
     - name: Create native binary
       run: |
