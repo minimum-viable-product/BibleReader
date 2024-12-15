@@ -7,21 +7,6 @@ class MainTests {
 
 
     public static int
-    test_checkCommandLine_returnsTrue_givenArgsArray() {
-        /* Arrange */
-        String[] arguments = { "genesis", "1", "1" };
-
-        /* Act */
-        boolean result = Main.checkCommandLine(arguments);
-
-        /* Assert */
-        TestRunner.assertThat(result == true, "\n\nSHOULD RETURN TRUE\n");
-
-        return 0;
-    }
-
-
-    public static int
     test_getBookNames_beginsWithGenesis_givenEmptyCmdArgs() {
 //        /* Arrange */
 //
@@ -187,5 +172,43 @@ class MainTests {
         return 0;
     }
 
+    public static int
+    test_isExactly_returnsTrue_givenSameValues() {
+        /* Arrange */
+        int expected_length = 3;
+        int actual_length = 3;
+        boolean expected = true;
+        boolean result = false;
 
+        /* Act */
+        result = Main.isExactly(expected_length, actual_length);
+
+        /* Assert */
+        TestRunner.assertThat(
+                result == expected,
+                "\n\nSHOULD BE: "+ expected +", GOT: "+ result +"\n"
+        );
+
+        return 0;
+    }
+
+    public static int
+    test_isExactly_returnsFalse_givenDifferentValues() {
+        /* Arrange */
+        int expected_length = 3;
+        int actual_length = 2;
+        boolean expected = false;
+        boolean result = true;
+
+        /* Act */
+        result = Main.isExactly(expected_length, actual_length);
+
+        /* Assert */
+        TestRunner.assertThat(
+                result == expected,
+                "\n\nSHOULD BE: "+ expected +", GOT: "+ result +"\n"
+        );
+
+        return 0;
+    }
 }

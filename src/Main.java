@@ -16,13 +16,27 @@ class Main {
         );
     }
 
+
+    static void
+    checkCommandLine(String[] args) {
+        boolean result = isExactly(3, args.length);
+        displayErrorExitOnBad(result);
+        return;
+    }
+
+
     static boolean
-    checkCommandLine(String[] cmdLineArgs) {
-        if (cmdLineArgs.length != 3) {
+    isExactly(int expected_length, int actual_length) {
+        return expected_length == actual_length ? true : false;
+    }
+
+
+    /** Exit and display error message if incorrect arguments */
+    static void
+    displayErrorExitOnBad(boolean result) {
+        if (! result) {
             Exit.displayError("EXPECTED: BibleReader <book> <chapter> <verse>");
         }
-
-        return true;
     }
 
 
@@ -40,7 +54,7 @@ class Main {
 
 
     /**
-     * Displays book names in 14 x 5 column format.
+     * Displays book names in 14 rows x 5 column format.
      */
     static void
     displayBookNamesInColumns() {
