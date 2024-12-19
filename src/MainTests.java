@@ -7,155 +7,42 @@ class MainTests {
 
 
     public static int
-    test_getBookNames_beginsWithGenesis_givenEmptyCmdArgs() {
-//        /* Arrange */
-//
-//
-        /* Act */
-        String[] result = Main.getBookNames();
-
-        /* Assert */
-        TestRunner.assertThat(result[0].equals("Genesis"),
-                              "\n\nFIRST BOOK SHOULD BE GENESIS\n");
-//
-        return 0;
-    }
-
-
-    public static int
-    test_getBookNames_endsWithRevelation_givenEmptyCmdArgs() {
+    test_columnize_returnsStringArrayOfColumns_givenNames() {
         /* Arrange */
-
+        String[] names = new String[] { "Name1", "Name2", "Name3", "Name4",
+                                        "Name5", "Name6", "Name7", "Name8",
+                                        "Name9", "Name10", "Name11", "Name12",
+                                        "Name13", "Name14", "Name15", "Name16" };
+        String[] result;
+        String expected = "Name1            Name15           ";
         /* Act */
-        String[] result = Main.getBookNames();
-
+        result = Main.columnize(names);
         /* Assert */
-        TestRunner.assertThat(result[65].equals("Revelation"),
-                              "\n\nLAST BOOK SHOULD BE REVELATION\n");
+        TestRunner.assertThat(result[0].equals(expected),
+                              "\n\nEXPECTED:\n"+ expected
+                              +"\nGOT:\n"+ result[0] +"\n");
         return 0;
     }
 
 
     public static int
-    test_getBookNames_secondBookIsExodus_givenEmptyCmdArgs() {
+    test_columnize_returnsProperSecondLine_givenNames() {
         /* Arrange */
-
+        String[] names = new String[] { "Name1", "Name2", "Name3", "Name4",
+                                        "Name5", "Name6", "Name7", "Name8",
+                                        "Name9", "Name10", "Name11", "Name12",
+                                        "Name13", "Name14", "Name15", "Name16" };
+        String[] result;
+        String expected = "Name2            Name16           ";
         /* Act */
-        String[] result = Main.getBookNames();
-
+        result = Main.columnize(names);
         /* Assert */
-        TestRunner.assertThat(result[1].equals("Exodus"),
-                              "\n\n2ND BOOK SHOULD BE EXODUS\n");
-//
+        TestRunner.assertThat(result[1].equals(expected),
+                              "\n\nEXPECTED:\n"+ expected
+                              +"\nGOT:\n"+ result[1] +"\n");
         return 0;
     }
 
-
-    public static int
-    test_getBookNames_returnsArrayOf66Strings_givenEmptyCmdArgs() {
-//        /* Arrange */
-//
-//
-        /* Act */
-        String[] result = Main.getBookNames();
-
-        /* Assert */
-        TestRunner.assertThat(result.length == 66,
-                              "\n\nARRAY OF BOOK NAMES SHOULD HAVE 66 ITEMS\n");
-//
-        return 0;
-    }
-
-
-    public static int
-    test_putNumbersInFront_returnsFirstSamuel_givenArrayOfBookNames() {
-        /* Arrange */
-        String[] bookNames = new String[] {
-                "Genesis", "Samuel1", "Revelation"
-        };
-
-        /* Act */
-        Main.putNumbersInFront(bookNames);
-
-        /* Assert */
-        TestRunner.assertThat(bookNames[1].equals("1 Samuel"),
-                              "\n\nNUMBERS SHOULD BE IN FRONT OF NAMES");
-        return 0;
-    }
-
-
-    public static int
-    test_sortBooksAlphabetically_returnsBooksInAlphabeticalOrder_givenArrayOfBookNames() {
-        /* Arrange */
-        String[] bookNames = new String[] {
-                "Genesis", "1 Samuel", "Revelation"
-        };
-
-        /* Act */
-        Main.sortBooksAlphabetically(bookNames);
-
-        /* Assert */
-        TestRunner.assertThat(bookNames[0].equals("Genesis")
-                              && bookNames[1].equals("Revelation")
-                              && bookNames[2].equals("1 Samuel"),
-                              "\n\nBOOK NAMES SHOULD BE IN ALPHABETICAL ORDER");
-
-        return 0;
-    }
-
-
-    public static int
-    test_moveNumbersBehindNames_returnsNumberOneBehindNames_givenBookNamesString() {
-        /* Arrange */
-        String[] bookNames = new String[] {
-                "Genesis", "1 Samuel", "Revelation"
-        };
-
-        /* Act */
-        Main.moveNumbersBehindNames(bookNames);
-
-        /* Assert */
-        TestRunner.assertThat(bookNames[1].equals("Samuel1"),
-                              "\n\nNUMBER ONE SHOULD BE BEHIND NAMES\n");
-
-        return 0;
-    }
-
-
-    public static int
-    test_moveNumbersBehindNames_returnsNumberTwoBehindNames_givenBookNamesString() {
-        /* Arrange */
-        String[] bookNames = new String[] {
-                "Genesis", "1 Samuel", "2 Samuel", "Revelation"
-        };
-
-        /* Act */
-        Main.moveNumbersBehindNames(bookNames);
-
-        /* Assert */
-        TestRunner.assertThat(bookNames[2].equals("Samuel2"),
-                              "\n\nNUMBER TWO SHOULD BE BEHIND NAMES\n");
-
-        return 0;
-    }
-
-
-    public static int
-    test_moveNumbersBehindNames_returnsNumberThreeBehindNames_givenBookNamesString() {
-        /* Arrange */
-        String[] bookNames = new String[] {
-                "Genesis", "1 Samuel", "2 Samuel", "3 John", "Revelation"
-        };
-
-        /* Act */
-        Main.moveNumbersBehindNames(bookNames);
-
-        /* Assert */
-        TestRunner.assertThat(bookNames[3].equals("John3"),
-                              "\n\nNUMBER THREE SHOULD BE BEHIND NAMES\n");
-
-        return 0;
-    }
 
     public static int
     test_pad_returnsStringWithTrailingSpace_givenString() {
