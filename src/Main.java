@@ -40,17 +40,13 @@ class Main {
         }
 
         return strings;
-        //String[] strings = new String[14];
-        //strings[0] = "Name1            Name15";
-        //strings[1] = "Name2            Name16";
-        //return strings;
     }
 
 
     static void
     displayBookNames() {
-        //String[] rows = columnize(Books.getNames());
-        String[] rows = Books.getNames();
+        String[] rows = columnize(Books.getNames());
+        //String[] rows = Books.getNames();
 
         /* display list of books */
         for (int i=0; i < rows.length; ++i) {
